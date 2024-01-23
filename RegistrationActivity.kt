@@ -22,13 +22,13 @@ class RegistrationActivity : ComponentActivity() {
         buttonRegister = findViewById(R.id.buttonRegister)
 
         buttonRegister.setOnClickListener {
-            // Implement your registration logic here
+            // Basic registration logic is gonna go right in here
             val newUsername = editTextNewUsername.text.toString()
             val newPassword = editTextNewPassword.text.toString()
 
-            // Example: Check if new username and password are not empty
+           
             if (newUsername.isNotEmpty() && newPassword.isNotEmpty()) {
-                // Replace this with your actual registration logic
+                // The big registration logic. Placeholders for now.
                 Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Please enter new username and password", Toast.LENGTH_SHORT).show()
