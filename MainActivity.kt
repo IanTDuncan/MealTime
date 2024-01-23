@@ -45,6 +45,7 @@ class MainActivity : ComponentActivity() {
                 Toast.makeText(this, "Please enter username and password", Toast.LENGTH_SHORT).show()
             }
         }
+        //This is button navigation to the registration page. 
         buttonRegisterPage.setOnClickListener {
             // Navigate to RegistrationActivity
             val intent = Intent(this, RegistrationActivity::class.java)
