@@ -19,6 +19,13 @@ class MyAccountActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.my_account_activity)
 
+        buttonBackToMainMenu = findViewById(R.id.buttonBackToMainMenu)
+        buttonAccount = findViewById(R.id.buttonAccount)
+        buttonNotifications = findViewById(R.id.buttonNotifications)
+        buttonPrivacySecurity = findViewById(R.id.buttonPrivacySecurity)
+        buttonHelpSupport = findViewById(R.id.buttonHelpSupport)
+        buttonAbout = findViewById(R.id.buttonAbout)
+
         buttonBackToMainMenu.setOnClickListener {
             val intent = Intent(this, MainMenuActivity::class.java)
             startActivity(intent)
