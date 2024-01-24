@@ -15,13 +15,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_centerHorizontal="false"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="center"
     android:gravity="center|top|center_vertical">
 
     <EditText
         android:id="@+id/editTextUsername"
         android:layout_width="372dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:hint="Username"
         android:minHeight="48dp" />
@@ -42,7 +44,9 @@
         android:layout_width="178dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextPassword"
-        android:layout_marginTop="184dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="187dp"
+        android:gravity="center"
         android:text="Login" />
 
     <Button
