@@ -17,6 +17,12 @@ class MainMenuActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_menu_activity)
 
+        buttonBack = findViewById(R.id.buttonBack)
+        buttonGenerateMeal = findViewById(R.id.buttonGenerateMeal)
+        buttonGroceryList = findViewById(R.id.buttonGroceryList)
+        buttonMyBookmarks = findViewById(R.id.buttonMyBookmarks)
+        buttonMyAccount = findViewById(R.id.buttonMyAccount)
+
         buttonBack.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
