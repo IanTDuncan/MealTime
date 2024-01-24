@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Back Button -->
+    <Button
+        android:id="@+id/buttonBackToMainMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"/>
+
+    <!-- Text Input: Cost Limit -->
+    <EditText
+        android:id="@+id/editTextCostLimit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonBackToMainMenu"
+        android:layout_marginTop="20dp"
+        android:hint="Cost Limit"
+        android:minHeight="48dp" />
+
+    <!-- Text Input: Calorie Limit -->
+    <EditText
+        android:id="@+id/editTextCalorieLimit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextCostLimit"
+        android:layout_marginTop="20dp"
+        android:hint="Calorie Limit"
+        android:minHeight="48dp" />
+
+    <!-- Labels for Exclude and Limit -->
+
+    <TextView
+        android:id="@+id/textViewExclude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextCalorieLimit"
+        android:layout_marginTop="119dp"
+        android:text="Exclude" />
+
+    <TextView
+        android:id="@+id/textViewLimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextCalorieLimit"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:text="Limit" />
+
+    <!-- Dropdowns for Exclude and Limit -->
+
+    <Spinner
+        android:id="@+id/spinnerExclude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewExclude"
+        android:layout_marginTop="38dp"
+        android:minHeight="48dp" />
+
+
+    <Spinner
+        android:id="@+id/spinnerLimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewLimit"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:minHeight="48dp" />
+
+    <!-- Text Input for Limit Amount -->
+    <EditText
+        android:id="@+id/editTextLimitAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerLimit"
+        android:layout_marginTop="133dp"
+        android:hint="Limit Amount"
+        android:minHeight="48dp" />
+
+    <!-- Buttons: Save Options and Generate Meal -->
+    <Button
+        android:id="@+id/buttonSaveOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextLimitAmount"
+        android:layout_marginTop="7dp"
+        android:text="Save these options" />
+
+    <Button
+        android:id="@+id/buttonGenerateMeal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSaveOptions"
+        android:layout_marginTop="115dp"
+        android:text="Generate Meal!" />
+
+</RelativeLayout>
+<!--
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</LinearLayout>-->
