@@ -14,6 +14,8 @@ class GroceryListActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.grocery_list_activity)
 
+         buttonBackToMainMenu = findViewById(R.id.buttonBackToMainMenu)
+
         buttonBackToMainMenu.setOnClickListener {
             val intent = Intent(this, MainMenuActivity::class.java)
             startActivity(intent)
