@@ -27,7 +27,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-    }
+     buttonLogin = findViewById(R.id.buttonLogin)
+     buttonRegisterPage = findViewById(R.id.buttonRegisterPage)
 
        buttonRegisterPage.setOnClickListener {
             // Navigate to RegistrationActivity
@@ -38,10 +39,11 @@ class MainActivity : ComponentActivity() {
        buttonLogin.setOnClickListener {
             //Navigate to Main Menu
           val intent = Intent(this, MainMenuActivity::class.java)
-          startActivity(Intent)
+          startActivity(intent)
           
        }
 
+}
 }
 
  /*   override fun onCreate(savedInstanceState: Bundle?) {
