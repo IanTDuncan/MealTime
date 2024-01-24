@@ -29,6 +29,19 @@ class MainActivity : ComponentActivity() {
 
     }
 
+       buttonRegisterPage.setOnClickListener {
+            // Navigate to RegistrationActivity
+            val intent = Intent(this, RegistrationActivity::class.java)
+            startActivity(intent)
+        }
+
+       buttonLogin.setOnClickListener {
+            //Navigate to Main Menu
+          val intent = Intent(this, MainMenuActivity::class.java)
+          startActivity(Intent)
+          
+       }
+
 }
 
  /*   override fun onCreate(savedInstanceState: Bundle?) {
