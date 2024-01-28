@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextNewPassword"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="73dp"
         android:text="Register" />
 
 </RelativeLayout>
