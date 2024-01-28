@@ -32,12 +32,13 @@
         android:text="My Bookmarks"
         android:textSize="24sp" />
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollViewBookmarks"
+    <ListView
+        android:id="@+id/bookmarkListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewBookmarksTitle"
-        android:layout_marginTop="20dp">
+        android:layout_height="match_parent"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        android:padding="16dp"/>
 
         <!-- LinearLayout to hold Bookmarked Items -->
         <LinearLayout
@@ -49,7 +50,6 @@
             <!-- Add TextViews for Bookmarked Items dynamically in code -->
 
         </LinearLayout>
-    </HorizontalScrollView>
 
     <!-- Navigational Menu for Pages -->
     <LinearLayout
