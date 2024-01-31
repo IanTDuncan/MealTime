@@ -1,36 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <!-- Back Button -->
-    <Button
-        android:id="@+id/buttonBackToMainMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_margin="16dp"/>
 
     <!-- Title: Grocery List -->
+
+    <!-- Scrollable ListView for Grocery Items -->
+
     <TextView
         android:id="@+id/textViewGroceryListTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
         android:text="Grocery List"
-        android:textSize="24sp"
-        android:layout_below="@id/buttonBackToMainMenu"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="16dp"/>
+        android:textSize="24sp" />
 
-    <!-- Scrollable ListView for Grocery Items -->
     <ListView
         android:id="@+id/listViewGroceryItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewGroceryListTitle"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="75dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="62dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/edamam_badge_transparent" />
+
+    <Button
+        android:id="@+id/buttonBackToMainMenu"
+        android:layout_width="111dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/listViewGroceryItems"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="661dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Back" />
 
 </RelativeLayout>
 <!--
