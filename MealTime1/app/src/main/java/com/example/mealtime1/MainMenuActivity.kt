@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
-import com.example.mealtime1.ui.theme.RegistrationActivity
+import com.example.mealtime1.RegistrationActivity
 
 class MainMenuActivity: ComponentActivity() {
     private lateinit var buttonBack: Button
