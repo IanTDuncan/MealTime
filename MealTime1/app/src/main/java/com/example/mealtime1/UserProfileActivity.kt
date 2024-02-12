@@ -16,8 +16,7 @@ class UserProfileActivity : ComponentActivity() {
 
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
-        FirebaseDatabase.getInstance()
-            .setPersistenceEnabled(true) // Optional for offline capabilities
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true) // Optional for offline capabilities
 
         // Initialize Firebase Database reference
         val database = FirebaseDatabase.getInstance()
@@ -42,7 +41,7 @@ class UserProfileActivity : ComponentActivity() {
         )
         usersRef.child(newUser.userID).setValue(newUser)
 
-// Retrieve a user from the database
+        // Retrieve a user from the database
         usersRef.child("uniqueUserID").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
