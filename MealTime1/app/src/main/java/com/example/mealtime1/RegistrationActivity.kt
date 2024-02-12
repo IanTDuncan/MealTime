@@ -1,4 +1,4 @@
-package com.example.mealtime1.ui.theme
+package com.example.mealtime1
 import android.os.Bundle
 import android.view.View
 import android.widget.Button

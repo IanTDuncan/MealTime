@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    // Add the dependency for the Google services Gradle plugin
+    id("com.google.gms.google-services") version "4.4.1" apply false
+
 }
 
 android {
@@ -51,6 +54,9 @@ android {
 
 dependencies {
 
+    implementation (platform("com.google.firebase:firebase-bom:32.7.2"))
+    implementation ("com.google.firebase:firebase-analytics-ktx")
+    implementation ("com.google.firebase:firebase-database-ktx")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.0")
