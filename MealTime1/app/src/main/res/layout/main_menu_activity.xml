@@ -11,20 +11,15 @@
     android:gravity="center">
 
     <!-- Back Button -->
-
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="16dp"
-        android:layout_marginStart="78dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="-100dp"
+        android:layout_marginTop="-350dp"
         android:text="Back" />
-
 
     <!-- Button: Generate My Meal -->
     <Button
@@ -32,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonBack"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="20dp"
         android:padding="16dp"
         android:text="Generate My Meal" />
@@ -43,10 +38,10 @@
         android:id="@+id/buttonGroceryList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Grocery List"
-        android:padding="16dp"
         android:layout_below="@id/buttonGenerateMeal"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:padding="16dp"
+        android:text="Grocery List" />
 
     <!-- Button: My Bookmarks -->
 
@@ -55,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonGroceryList"
-        android:layout_marginTop="139dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:padding="16dp"
         android:text="My Bookmarks" />
@@ -65,8 +60,8 @@
         android:id="@+id/buttonMyAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonMyBookmarks"
-        android:layout_marginTop="-183dp"
+        android:layout_below="@+id/buttonMyBookmarks"
+        android:layout_marginTop="80dp"
         android:layout_marginBottom="20dp"
         android:padding="16dp"
         android:text="My Account" />
