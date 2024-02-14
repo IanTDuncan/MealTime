@@ -20,8 +20,6 @@
         android:text="Back" />
 
     <!-- Title: My Bookmarks -->
-
-    <!-- Horizontal ScrollView for Bookmarked Items -->
     <TextView
         android:id="@+id/textViewBookmarksTitle"
         android:layout_width="wrap_content"
@@ -32,6 +30,7 @@
         android:text="My Bookmarks"
         android:textSize="24sp" />
 
+    <!-- Horizontal ListView for Bookmarked Items -->
     <ListView
         android:id="@+id/bookmarkListView"
         android:layout_width="match_parent"
@@ -61,9 +60,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
-
-        <!-- Add Buttons with Page Numbers dynamically in code -->
-
     </LinearLayout>
 
 </RelativeLayout>
