@@ -7,7 +7,7 @@ class AccountSupportAction: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.account_support_action)
+        setContentView(R.layout.user_info_activity)
 
     }
 }

@@ -17,13 +17,13 @@ class MyAccountActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.my_account_activity)
+        setContentView(R.layout.account_options_activity)
 
         buttonBackToMainMenu = findViewById(R.id.buttonBackToMainMenu)
         buttonAccount = findViewById(R.id.buttonAccount)
         buttonNotifications = findViewById(R.id.buttonNotifications)
         buttonPrivacySecurity = findViewById(R.id.buttonPrivacySecurity)
-        buttonHelpSupport = findViewById(R.id.buttonHelpSupport)
+        buttonHelpSupport = findViewById(R.id.helpSupportInfo)
         buttonAbout = findViewById(R.id.buttonAbout)
 
         buttonBackToMainMenu.setOnClickListener {

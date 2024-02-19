@@ -75,27 +75,30 @@
         android:layout_below="@id/buttonNotifications"
         android:layout_marginTop="20dp"/>
 
-    <Button
-        android:id="@+id/buttonHelpSupport"
+    <TextView
+        android:id="@+id/helpSupportInfo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Help and Support"
+        android:layout_height="30dp"
         android:layout_below="@id/buttonPrivacySecurity"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:text="Contact us at ________@gmail.com"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/buttonAbout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="About"
-        android:layout_below="@id/buttonHelpSupport"
+        android:layout_below="@id/helpSupportInfo"
         android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/textViewMyAccountTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="462dp"
+        android:layout_above="@+id/relativeLayoutAccountTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
         android:text="My Account"
         android:textSize="24sp" />
 
