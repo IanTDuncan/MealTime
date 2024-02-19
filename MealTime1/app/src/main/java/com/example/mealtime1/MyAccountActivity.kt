@@ -23,7 +23,7 @@ class MyAccountActivity: ComponentActivity() {
         buttonAccount = findViewById(R.id.buttonAccount)
         buttonNotifications = findViewById(R.id.buttonNotifications)
         buttonPrivacySecurity = findViewById(R.id.buttonPrivacySecurity)
-        buttonHelpSupport = findViewById(R.id.helpSupportInfo)
+        //buttonHelpSupport = findViewById(R.id.helpSupportInfo)
         buttonAbout = findViewById(R.id.buttonAbout)
 
         buttonBackToMainMenu.setOnClickListener {
