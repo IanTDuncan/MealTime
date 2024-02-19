@@ -30,5 +30,10 @@ class MyAccountActivity: ComponentActivity() {
             val intent = Intent(this, MainMenuActivity::class.java)
             startActivity(intent)
         }
+
+        buttonAbout.setOnClickListener {
+            val intent = Intent(this, AccountAboutActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -1,4 +1,5 @@
 package com.example.mealtime1
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -12,14 +13,17 @@ class RegistrationActivity : ComponentActivity() {
     private lateinit var editTextNewUsername: EditText
     private lateinit var editTextNewPassword: EditText
     private lateinit var buttonRegister: Button
+    private lateinit var buttonBack: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.registration_activity)
 
+
         editTextNewUsername = findViewById(R.id.editTextNewUsername)
         editTextNewPassword = findViewById(R.id.editTextNewPassword)
         buttonRegister = findViewById(R.id.buttonRegister)
+        buttonBack = findViewById(R.id.buttonBack)
 
         buttonRegister.setOnClickListener {
             // Implement your registration logic here
@@ -33,6 +37,11 @@ class RegistrationActivity : ComponentActivity() {
             } else {
                 Toast.makeText(this, "Please enter new username and password", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        buttonBack.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

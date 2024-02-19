@@ -13,6 +13,8 @@ class MyBookmarksActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.bookmars_activity)
 
+        buttonBackToMainMenu = findViewById(R.id.buttonBackToMainMenu)
+
         val bookmarks = listOf(
             Bookmark("Google", "https://www.google.com"),
             Bookmark("GitHub", "https://www.github.com"),
@@ -22,6 +24,11 @@ class MyBookmarksActivity: ComponentActivity() {
         val bookmarkListView: ListView = findViewById(R.id.bookmarkListView)
         val adapter = BookmarkAdapter(this, android.R.layout.simple_list_item_2, bookmarks)
         bookmarkListView.adapter = adapter
+
+        buttonBackToMainMenu.setOnClickListener{
+            val intent = Intent(this, MainMenuActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
 
