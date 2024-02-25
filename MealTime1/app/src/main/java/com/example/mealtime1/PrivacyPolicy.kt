@@ -7,7 +7,7 @@ class PrivacyPolicy: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.privacy_security_policy_action)
+        setContentView(R.layout.privacy_security_policy_action) //Use "policies_about_activity" here. Action is also defunct
 
     }
 }
