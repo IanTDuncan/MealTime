@@ -84,6 +84,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:text="Eggs" />
+
+            <CheckBox
+                android:id="@+id/nutAllergy"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Nuts" />
+
+            <CheckBox
+                android:id="@+id/wheatAllergy"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Wheat" />
+
+            <CheckBox
+                android:id="@+id/soyAllergy"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Soy" />
+
+            <CheckBox
+                android:id="@+id/fishAllergy"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Fish" />
         </LinearLayout>
     </ScrollView>
 
