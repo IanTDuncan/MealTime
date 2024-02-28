@@ -9,7 +9,7 @@ class DailyIntakeActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.user_profile_activity)
+        setContentView(R.layout.user_info_activity)
 
         // Initialize Firebase
         FirebaseApp.initializeApp(this)

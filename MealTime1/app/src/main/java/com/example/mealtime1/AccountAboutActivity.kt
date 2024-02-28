@@ -14,7 +14,7 @@ class AccountAboutActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.privacy_security_policy_activity)
+        setContentView(R.layout.policies_about_activity)
 
         buttonBack = findViewById(R.id.buttonBackToMyAccount)
         buttonForTerms = findViewById(R.id.buttonForTerms)
