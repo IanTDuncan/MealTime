@@ -1,18 +1,17 @@
 package com.example.mealtime1
+
 import android.os.Bundle
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import androidx.activity.ComponentActivity
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-
 
 class UserProfileActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.user_profile_activity)
 
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
@@ -26,19 +25,16 @@ class UserProfileActivity : ComponentActivity() {
         val newUser = User(
             "uniqueUserID",
             "JohnDoe",
-            //password: #,
             "john.doe@example.com",
-            // age: 25,
-            // gender: "male",
-            173.0,
-            5.11,
-            "active",
-            1750,
-            2000.0,
+            165.0,
+            5.8,
+            "very active",
+            2600,
+            500.0,
             "diabetes",
             "cats"
-
         )
+
         usersRef.child(newUser.userID).setValue(newUser)
 
         // Retrieve a user from the database
@@ -56,8 +52,5 @@ class UserProfileActivity : ComponentActivity() {
                 // Handle error
             }
         })
-
     }
 }
-
-
