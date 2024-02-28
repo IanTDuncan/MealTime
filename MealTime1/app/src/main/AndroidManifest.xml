@@ -15,7 +15,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.MealTime1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,6 +63,66 @@
         <activity
             android:name=".AccountAboutActivity"
             android:label="About"
+            android:theme="@style/Theme.MealTime1" />
+
+        <!-- Add the declaration for AccountNotificationsActivity -->
+        <activity
+            android:name=".AccountNotificationsActivity"
+            android:label="Notifications"
+            android:theme="@style/Theme.MealTime1" />
+
+        <!-- Add the declaration for AccountOptionsActivity -->
+        <activity
+            android:name=".AccountOptionsActivity"
+            android:label="Options"
+            android:theme="@style/Theme.MealTime1" />
+
+        <!-- Add the declaration for AccountSupportAction -->
+        <activity
+            android:name=".AccountSupportAction"
+            android:label="Support"
+            android:theme="@style/Theme.MealTime1" />
+
+        <!-- Add the declaration for FoodItemActivity -->
+        <activity
+            android:name=".FoodItemActivity"
+            android:label="Food Item"
+            android:theme="@style/Theme.MealTime1" />
+
+        <!-- Add the declaration for MealActivity -->
+        <activity
+            android:name=".MealActivity"
+            android:label="Meal Activity"
+            android:theme="@style/Theme.MealTime1" />
+
+        <!-- Add the declaration for MealDataActivity -->
+        <activity
+            android:name=".MealDataActivity"
+            android:label="Meal Data"
+            android:theme="@style/Theme.MealTime1" />
+
+        <!-- Add the declaration for MealResultActivity -->
+        <activity
+            android:name=".MealResultActivity"
+            android:label="Meal Result"
+            android:theme="@style/Theme.MealTime1" />
+
+        <!-- Add the declaration for PasswordChangeActivity -->
+        <activity
+            android:name=".PasswordChangeActivity"
+            android:label="Change Password"
+            android:theme="@style/Theme.MealTime1" />
+
+        <!-- Add the declaration for PrivacyPolicy -->
+        <activity
+            android:name=".PrivacyPolicy"
+            android:label="Privacy Policy"
+            android:theme="@style/Theme.MealTime1" />
+
+        <!-- Add the declaration for UserProfileActivity -->
+        <activity
+            android:name=".UserProfileActivity"
+            android:label="User Profile"
             android:theme="@style/Theme.MealTime1" />
 
     </application>

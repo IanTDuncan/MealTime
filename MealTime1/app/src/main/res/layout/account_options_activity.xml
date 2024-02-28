@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</LinearLayout>-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Back Button -->
+    <Button
+        android:id="@+id/buttonBackToMainMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Back" />
+
+    <!-- Icon Placeholder and Title: My Account -->
+    <RelativeLayout
+        android:id="@+id/relativeLayoutAccountTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonBackToMainMenu"
+        android:layout_marginTop="20dp">
+
+        <!-- ImageView for Icon Placeholder -->
+        <ImageView
+            android:id="@+id/imageViewAccountIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="TODO" />
+
+        <!-- Title: My Account -->
+    </RelativeLayout>
+
+    <!-- Line Separator -->
+    <View
+        android:id="@+id/viewSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"
+        android:layout_below="@id/relativeLayoutAccountTitle"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Buttons for Account Options -->
+    <Button
+        android:id="@+id/buttonAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewSeparator"
+        android:layout_marginTop="20dp"
+        android:text="Account Info" />
+
+    <Button
+        android:id="@+id/buttonNotifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notifications"
+        android:layout_below="@id/buttonAccount"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/buttonPrivacySecurity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Privacy and Security"
+        android:layout_below="@id/buttonNotifications"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/buttonHelpSupport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Help and Support"
+        android:layout_below="@id/buttonPrivacySecurity"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/buttonAbout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About"
+        android:layout_below="@id/buttonHelpSupport"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textViewMyAccountTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="462dp"
+        android:text="My Account"
+        android:textSize="24sp" />
+
+</RelativeLayout>
