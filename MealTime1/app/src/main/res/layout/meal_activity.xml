@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <!-- Toggles for breakfast meals -->
     <Switch
         android:id="@+id/breakfastSwitch"
         android:layout_width="wrap_content"
@@ -13,6 +15,7 @@
         android:layout_marginTop="77dp"
         android:text="Breakfast" />
 
+    <!-- Generates meal based off of options chosen -->
     <Button
         android:id="@+id/generateMealButton"
         android:layout_width="wrap_content"
@@ -24,6 +27,17 @@
         android:layout_marginBottom="80dp"
         android:text="Generate a meal!" />
 
+    <!-- Toggles for lunch meals -->
+    <Switch
+        android:id="@+id/lunchSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="77dp"
+        android:layout_toEndOf="@+id/breakfastSwitch"
+        android:text="Lunch" />
+    <!-- Toggles for dinner meals -->
     <Switch
         android:id="@+id/dinnerSwitch"
         android:layout_width="wrap_content"
@@ -34,16 +48,9 @@
         android:layout_toEndOf="@+id/lunchSwitch"
         android:text="Dinner" />
 
-    <Switch
-        android:id="@+id/lunchSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="77dp"
-        android:layout_toEndOf="@+id/breakfastSwitch"
-        android:text="Lunch" />
 
+
+    <!-- Back button to go back a page -->
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
@@ -52,6 +59,22 @@
         android:layout_marginTop="25dp"
         android:text="Back" />
 
+    <!-- Edaman API Attribution -->
+    <ImageView
+        android:id="@+id/attribution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="3dp"
+        android:src="@drawable/edamam_badge_transparent" />
+
+    <!-- Scrollview containing all options to narrow down meal generation -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -66,6 +89,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <!-- Informs what category is next -->
             <TextView
                 android:id="@+id/allergiesView"
                 android:layout_width="wrap_content"
@@ -73,41 +97,87 @@
                 android:text="Allergies"
                 android:textSize="35sp" />
 
+            <!-- dairy allergy option -->
             <CheckBox
                 android:id="@+id/dairyAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:text="Dairy" />
 
+            <!-- Egg allergy option -->
             <CheckBox
                 android:id="@+id/eggAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:text="Eggs" />
 
+            <!-- nut allergy option -->
             <CheckBox
                 android:id="@+id/nutAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:text="Nuts" />
 
+            <!-- wheat allergy option -->
             <CheckBox
                 android:id="@+id/wheatAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:text="Wheat" />
 
+            <!-- Soy allergy option -->
             <CheckBox
                 android:id="@+id/soyAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:text="Soy" />
 
+            <!-- Fish allergy option -->
             <CheckBox
                 android:id="@+id/fishAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:text="Fish" />
+
+            <!-- Informs what category is next -->
+            <TextView
+                android:id="@+id/dietSeparator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dietary Restrictions"
+                android:textSize="35sp" />
+
+            <!-- Vegan option for diets -->
+            <CheckBox
+                android:id="@+id/vegan"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Vegan" />
+
+            <!-- Gluten-Free option for diets -->
+            <CheckBox
+                android:id="@+id/glutenFree"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Gluten-Free" />
+
+            <!-- Informing what the next category is-->
+            <TextView
+                android:id="@+id/calorieAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calorie Range (Highest amount)"
+                android:textSize="25sp" />
+
+            <!-- Highest amount of calories you want in one meal-->
+            <EditText
+                android:id="@+id/lowRange"
+                android:layout_width="303dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Highest amount of calories you want"
+                android:inputType="number" />
+
         </LinearLayout>
     </ScrollView>
 
