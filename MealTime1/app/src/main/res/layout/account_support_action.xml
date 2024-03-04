@@ -30,12 +30,13 @@
         <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_alignTop="@+id/usernameView"
             android:layout_marginStart="4dp"
             android:layout_marginTop="0dp"
             android:layout_toEndOf="@+id/usernameView"
             android:ems="10"
+            android:hint="Username"
             android:inputType="text" />
 
         <!-- Indicates user email -->
@@ -52,12 +53,13 @@
         <EditText
             android:id="@+id/editTextTextEmailAddress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_below="@+id/usernameView"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="48dp"
             android:layout_toRightOf="@id/emailView"
             android:ems="10"
+            android:hint="User Email address"
             android:inputType="textEmailAddress" />
 
         <!-- Reset Password button -->
