@@ -29,18 +29,20 @@
 
     <Button
         android:id="@+id/buttonRegister"
-        android:layout_width="match_parent"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextNewPassword"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="71dp"
         android:text="Register" />
 
     <Button
         android:id="@+id/buttonBack"
-        android:layout_width="match_parent"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonRegister"
-        android:layout_marginTop="17dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
         android:text="Back" />
 
 </RelativeLayout>
