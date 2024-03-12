@@ -68,35 +68,11 @@
         android:layout_marginTop="20dp"/>
 
     <Button
-        android:id="@+id/buttonPrivacySecurity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Privacy and Security"
-        android:layout_below="@id/buttonNotifications"
-        android:layout_marginTop="20dp"/>
-
-    <Button
         android:id="@+id/buttonHelpSupport"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Help and Support"
-        android:layout_below="@id/buttonPrivacySecurity"
-        android:layout_marginTop="20dp"/>
-
-    <Button
-        android:id="@+id/buttonAbout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="About"
-        android:layout_below="@id/buttonHelpSupport"
-        android:layout_marginTop="20dp"/>
-
-    <TextView
-        android:id="@+id/textViewMyAccountTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="462dp"
-        android:text="My Account"
-        android:textSize="24sp" />
+        android:layout_below="@id/buttonNotifications"
+        android:layout_marginTop="20dp"
+        android:text="About" />
 
 </RelativeLayout>
