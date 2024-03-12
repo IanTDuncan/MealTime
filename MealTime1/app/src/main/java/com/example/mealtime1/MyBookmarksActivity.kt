@@ -11,7 +11,7 @@ class MyBookmarksActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.bookmars_activity)
+        setContentView(R.layout.bookmarks_activity)
 
         buttonBackToMainMenu = findViewById(R.id.buttonBackToMainMenu)
 

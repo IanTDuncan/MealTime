@@ -25,13 +25,6 @@
         android:layout_marginBottom="75dp" />
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="250dp"
-        android:layout_height="62dp"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/edamam_badge_transparent" />
-
     <!-- Back Button -->
     <Button
         android:id="@+id/buttonBackToMainMenu"

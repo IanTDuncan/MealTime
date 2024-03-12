@@ -56,10 +56,11 @@
 
     <Button
         android:id="@+id/buttonRegisterPage"
-        android:layout_width="match_parent"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonLogin"
-        android:layout_marginTop="17dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
         android:text="Register" />
 
 </RelativeLayout>

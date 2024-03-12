@@ -22,16 +22,14 @@ class MyAccountActivity: ComponentActivity() {
         buttonBackToMainMenu = findViewById(R.id.buttonBackToMainMenu)
         buttonAccount = findViewById(R.id.buttonAccount)
         buttonNotifications = findViewById(R.id.buttonNotifications)
-        buttonPrivacySecurity = findViewById(R.id.buttonPrivacySecurity)
-        //buttonHelpSupport = findViewById(R.id.helpSupportInfo)
-        buttonAbout = findViewById(R.id.buttonAbout)
+        buttonHelpSupport = findViewById(R.id.buttonHelpSupport)
 
         buttonBackToMainMenu.setOnClickListener {
             val intent = Intent(this, MainMenuActivity::class.java)
             startActivity(intent)
         }
 
-        buttonAbout.setOnClickListener {
+        buttonHelpSupport.setOnClickListener {
             val intent = Intent(this, AccountAboutActivity::class.java)
             startActivity(intent)
         }

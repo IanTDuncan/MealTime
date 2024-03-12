@@ -7,57 +7,76 @@
 </LinearLayout>-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
+    android:layout_height="match_parent">
 
     <!-- Back Button -->
+
+    <!-- Button: Generate My Meal -->
+
+    <!-- Button: Grocery List -->
+
+    <!-- Button: My Bookmarks -->
+
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="-100dp"
-        android:layout_marginTop="-160dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="53dp"
         android:text="Back" />
 
-    <!-- Button: Generate My Meal -->
+    <!-- Button: My Account -->
+
     <Button
         android:id="@+id/buttonGenerateMeal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonBack"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="120dp"
         android:layout_marginBottom="20dp"
         android:padding="16dp"
         android:text="Generate My Meal" />
 
-    <!-- Button: Grocery List -->
     <Button
         android:id="@+id/buttonGroceryList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonGenerateMeal"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="143dp"
         android:layout_marginBottom="20dp"
         android:padding="16dp"
         android:text="Grocery List" />
 
-    <!-- Button: My Bookmarks -->
     <Button
         android:id="@+id/buttonMyBookmarks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonGroceryList"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="135dp"
         android:layout_marginBottom="20dp"
         android:padding="16dp"
         android:text="My Bookmarks" />
 
-    <!-- Button: My Account -->
     <Button
         android:id="@+id/buttonMyAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonMyBookmarks"
-        android:layout_marginTop="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="144dp"
         android:layout_marginBottom="20dp"
         android:padding="16dp"
         android:text="My Account" />

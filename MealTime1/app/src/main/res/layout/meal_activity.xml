@@ -60,19 +60,6 @@
         android:text="Back" />
 
     <!-- Edaman API Attribution -->
-    <ImageView
-        android:id="@+id/attribution"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="3dp"
-        android:src="@drawable/edamam_badge_transparent" />
 
     <!-- Scrollview containing all options to narrow down meal generation -->
     <ScrollView

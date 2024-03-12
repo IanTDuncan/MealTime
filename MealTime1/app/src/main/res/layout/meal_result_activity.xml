@@ -64,13 +64,4 @@
         android:hint="List of ingredients + nutrients"
         android:inputType="textMultiLine" />
 
-    <ImageView
-        android:id="@+id/attributionImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp"
-        android:src="@drawable/edamam_badge_transparent" />
-
 </RelativeLayout>

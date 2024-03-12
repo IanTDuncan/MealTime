@@ -16,9 +16,9 @@ class GenerateMealActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.generate_meal_activity)
+        setContentView(R.layout.meal_activity)
 
-         buttonBackToMainMenu = findViewById(R.id.buttonBackToMainMenu)
+         buttonBackToMainMenu = findViewById(R.id.backButton)
 
         buttonBackToMainMenu.setOnClickListener {
             val intent = Intent(this, MainMenuActivity::class.java)
