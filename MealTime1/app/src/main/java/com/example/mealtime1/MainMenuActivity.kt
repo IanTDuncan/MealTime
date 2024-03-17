@@ -17,7 +17,7 @@ class MainMenuActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_menu_activity)
 
-        buttonBack = findViewById(R.id.buttonBack)
+        buttonBack = findViewById(R.id.logOutButton)
         buttonGenerateMeal = findViewById(R.id.buttonGenerateMeal)
         buttonGroceryList = findViewById(R.id.buttonGroceryList)
         buttonMyBookmarks = findViewById(R.id.buttonMyBookmarks)

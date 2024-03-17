@@ -108,7 +108,7 @@
         <EditText
             android:id="@+id/ageNumber"
             android:layout_width="260dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="125dp"
@@ -120,7 +120,7 @@
         <EditText
             android:id="@+id/editTextGender"
             android:layout_width="257dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="170dp"
@@ -144,7 +144,7 @@
         <EditText
             android:id="@+id/editWeight"
             android:layout_width="258dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="261dp"
@@ -166,7 +166,7 @@
         <EditText
             android:id="@+id/editTextTextPassword"
             android:layout_width="253dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="305dp"
@@ -188,7 +188,7 @@
         <CheckBox
             android:id="@+id/showPsswrd"
             android:layout_width="80dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="318dp"
