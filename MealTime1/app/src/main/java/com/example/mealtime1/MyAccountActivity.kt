@@ -10,10 +10,7 @@ class MyAccountActivity: ComponentActivity() {
     //Account option buttons
     private lateinit var buttonAccount: Button
     private lateinit var buttonNotifications: Button
-    private lateinit var buttonPrivacySecurity: Button
     private lateinit var buttonHelpSupport: Button
-    private lateinit var buttonAbout: Button
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +28,11 @@ class MyAccountActivity: ComponentActivity() {
 
         buttonHelpSupport.setOnClickListener {
             val intent = Intent(this, AccountAboutActivity::class.java)
+            startActivity(intent)
+        }
+
+        buttonAccount.setOnClickListener {
+            val intent = Intent(this, AccountOptionsActivity::class.java)
             startActivity(intent)
         }
     }
