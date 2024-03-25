@@ -5,27 +5,18 @@
     android:layout_height="match_parent" >
 
     <!-- Toggles for breakfast meals -->
-    <Switch
+
+    <!-- Generates meal based off of options chosen -->
+
+    <CheckBox
         android:id="@+id/weekdaySwitch"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="77dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="75dp"
         android:text="Weekdays" />
-
-    <!-- Generates meal based off of options chosen -->
-    <Button
-        android:id="@+id/generateMealButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="80dp"
-        android:text="Generate a meal!" />
 
     <!-- Toggles for lunch meals -->
     <!-- Toggles for dinner meals -->
@@ -33,13 +24,24 @@
 
     <!-- Back button to go back a page -->
 
-    <Switch
+    <Button
+        android:id="@+id/generateMealButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="151dp"
+        android:layout_marginBottom="30dp"
+        android:text="Generate a meal!" />
+
+    <CheckBox
         android:id="@+id/fullWeekSwitch"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="77dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="75dp"
         android:layout_toEndOf="@+id/weekdaySwitch"
         android:text="Full Week" />
 
@@ -57,12 +59,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/generateMealButton"
+        android:layout_above="@+id/generateMealButton"
         android:layout_below="@+id/fullWeekSwitch"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"

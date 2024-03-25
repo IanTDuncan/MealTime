@@ -23,42 +23,32 @@
 
         <!-- Username goes here -->
 
-        <TextView
-            android:id="@+id/usernameView"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="80dp"
-            android:text="Username"
-            android:textSize="20sp" />
-
         <!-- Indicates user email -->
 
         <!-- User Email -->
 
         <!-- Reset Password button -->
 
+        <TextView
+            android:id="@+id/usernameView"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="80dp"
+            android:text="Username"
+            android:textSize="20sp" />
+
         <EditText
             android:id="@+id/username"
-            android:layout_width="253dp"
+            android:layout_width="258dp"
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="75dp"
-            android:layout_marginEnd="11dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="Username"
             android:inputType="text" />
-
-        <Button
-            android:id="@+id/passwordReset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center|center_horizontal|center_vertical"
-            android:layout_marginStart="150dp"
-            android:layout_marginBottom="213dp"
-            android:text="RESET PASSWORD" />
 
         <TextView
             android:id="@+id/ageView"
@@ -67,8 +57,7 @@
             android:layout_below="@id/usernameView"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="130dp"
             android:text="Age"
             android:textSize="20sp" />
@@ -80,7 +69,7 @@
             android:layout_below="@id/ageView"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="179dp"
             android:text="Gender"
             android:textSize="20sp" />
@@ -91,8 +80,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="222dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="227dp"
             android:text="Height"
             android:textSize="20sp" />
 
@@ -101,44 +90,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginBottom="439dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="272dp"
             android:text="Weight"
             android:textSize="20sp" />
 
         <EditText
             android:id="@+id/ageNumber"
-            android:layout_width="260dp"
+            android:layout_width="258dp"
             android:layout_height="48dp"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/username"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="125dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="Age in years"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextGender"
-            android:layout_width="257dp"
+            android:layout_width="258dp"
             android:layout_height="48dp"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/ageNumber"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="170dp"
-            android:layout_marginEnd="7dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="Gender here"
             android:inputType="text" />
 
         <EditText
             android:id="@+id/editHeightText"
-            android:layout_width="259dp"
+            android:layout_width="258dp"
             android:layout_height="48dp"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/editTextGender"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="214dp"
-            android:layout_marginEnd="6dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="Height in feet and inches"
             android:inputType="text" />
@@ -147,33 +136,34 @@
             android:id="@+id/editWeight"
             android:layout_width="258dp"
             android:layout_height="48dp"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/editHeightText"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="261dp"
-            android:layout_marginEnd="6dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="Weight in pounds"
             android:inputType="text" />
 
         <Button
             android:id="@+id/saveInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="415dp"
-            android:layout_marginEnd="148dp"
+            android:layout_marginTop="450dp"
+            android:layout_marginEnd="170dp"
             android:text="Save" />
 
         <EditText
             android:id="@+id/editTextTextPassword"
-            android:layout_width="253dp"
+            android:layout_width="258dp"
             android:layout_height="48dp"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/editWeight"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="305dp"
-            android:layout_marginEnd="6dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
+            android:hint="Password"
             android:inputType="textPassword" />
 
         <TextView
@@ -182,8 +172,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="312dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="319dp"
             android:text="Password"
             android:textSize="20sp" />
 
@@ -191,10 +181,10 @@
             android:id="@+id/showPsswrd"
             android:layout_width="80dp"
             android:layout_height="48dp"
+            android:layout_below="@+id/editTextTextPassword"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="318dp"
-            android:layout_marginTop="360dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="0dp"
             android:text="Show"
             android:textSize="16sp" />
 
