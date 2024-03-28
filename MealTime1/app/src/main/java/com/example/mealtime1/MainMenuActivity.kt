@@ -4,10 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
-import com.example.mealtime1.RegistrationActivity
 
 class MainMenuActivity: ComponentActivity() {
-    private lateinit var buttonBack: Button
     private lateinit var buttonGenerateMeal: Button
     private lateinit var buttonGroceryList: Button
     private lateinit var buttonMyBookmarks: Button
@@ -17,16 +15,11 @@ class MainMenuActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_menu_activity)
 
-        buttonBack = findViewById(R.id.logOutButton)
         buttonGenerateMeal = findViewById(R.id.buttonGenerateMeal)
         buttonGroceryList = findViewById(R.id.buttonGroceryList)
         buttonMyBookmarks = findViewById(R.id.buttonMyBookmarks)
         buttonMyAccount = findViewById(R.id.buttonMyAccount)
 
-        buttonBack.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
 
         buttonGenerateMeal.setOnClickListener {
             val intent = Intent(this,GenerateMealActivity::class.java)
