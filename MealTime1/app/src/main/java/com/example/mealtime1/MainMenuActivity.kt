@@ -22,7 +22,7 @@ class MainMenuActivity: ComponentActivity() {
 
 
         buttonGenerateMeal.setOnClickListener {
-            val intent = Intent(this,GenerateMealActivity::class.java)
+            val intent = Intent(this,MealActivity::class.java)
             startActivity(intent)
         }
 
