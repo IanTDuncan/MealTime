@@ -4,18 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <!-- Toggles for breakfast meals -->
-    <Switch
-        android:id="@+id/weekdaySwitch"
+    <!-- Back button to go back a page -->
+    <Button
+        android:id="@+id/backButton"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="77dp"
-        android:text="Weekdays" />
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:text="Back" />
 
-    <!-- Generates meal based off of options chosen -->
+    <!-- Radio group for time frame selection -->
+    <RadioGroup
+        android:id="@+id/weekOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/backButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp">
+
+        <!-- Toggles for breakfast meals -->
+        <RadioButton
+            android:id="@+id/weekdaySwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="day" />
+
+        <!-- Toggles for full week meals -->
+        <RadioButton
+            android:id="@+id/fullWeekSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="week" />
+    </RadioGroup>
+
+    <!-- Generate meal button -->
     <Button
         android:id="@+id/generateMealButton"
         android:layout_width="wrap_content"
@@ -23,46 +47,18 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="151dp"
+        android:layout_marginBottom="30dp"
         android:text="Generate a meal!" />
-
-    <!-- Toggles for lunch meals -->
-    <!-- Toggles for dinner meals -->
-
-
-    <!-- Back button to go back a page -->
-
-    <Switch
-        android:id="@+id/fullWeekSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="77dp"
-        android:layout_toEndOf="@+id/weekdaySwitch"
-        android:text="Full Week" />
-
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        android:text="Back" />
-
-    <!-- Edaman API Attribution -->
 
     <!-- Scrollview containing all options to narrow down meal generation -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/generateMealButton"
-        android:layout_below="@+id/fullWeekSwitch"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp">
+        android:layout_below="@id/weekOptions"
+        android:layout_above="@+id/generateMealButton"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -127,26 +123,97 @@
                 android:text="Dietary Restrictions"
                 android:textSize="35sp" />
 
-            <!-- Vegan option for diets -->
-            <CheckBox
-                android:id="@+id/vegan"
+            <!-- Radio group for diet selection -->
+            <RadioGroup
+                android:id="@+id/dietRadioGroup"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Vegan" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <!-- Gluten-Free option for diets -->
-            <CheckBox
-                android:id="@+id/glutenFree"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Gluten-Free" />
+                <!-- Vegan option for diets -->
+                <RadioButton
+                    android:id="@+id/vegan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Vegan" />
+
+                <!-- Gluten-Free option for diets -->
+                <RadioButton
+                    android:id="@+id/glutenFree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Gluten-Free" />
+
+                <!-- Ketogenic option for diets -->
+                <RadioButton
+                    android:id="@+id/ketogenic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Ketogenic" />
+
+                <!-- Vegetarian option for diets -->
+                <RadioButton
+                    android:id="@+id/vegetarian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Vegetarian" />
+
+                <!-- Lacto-Vegetarian option for diets -->
+                <RadioButton
+                    android:id="@+id/lactoVegetarian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Lacto-Vegetarian" />
+
+                <!-- Ovo-Vegetarian option for diets -->
+                <RadioButton
+                    android:id="@+id/ovoVegetarian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Ovo-Vegetarian" />
+
+                <!-- Pescetarian option for diets -->
+                <RadioButton
+                    android:id="@+id/pescetarian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Pescetarian" />
+
+                <!-- Paleo option for diets -->
+                <RadioButton
+                    android:id="@+id/paleo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Paleo" />
+
+                <!-- Primal option for diets -->
+                <RadioButton
+                    android:id="@+id/primal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Primal" />
+
+                <!-- Low FODMAP option for diets -->
+                <RadioButton
+                    android:id="@+id/lowFodmap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Low FODMAP" />
+
+                <!-- Whole30 option for diets -->
+                <RadioButton
+                    android:id="@+id/whole30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Whole30" />
+            </RadioGroup>
 
             <!-- Informing what the next category is-->
             <TextView
                 android:id="@+id/calorieAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Calorie Range (Highest amount)"
+                android:text="Target Calories"
                 android:textSize="25sp" />
 
             <!-- Highest amount of calories you want in one meal-->
@@ -155,7 +222,7 @@
                 android:layout_width="303dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Highest amount of calories you want"
+                android:hint="Calories Per Day"
                 android:inputType="number" />
 
         </LinearLayout>

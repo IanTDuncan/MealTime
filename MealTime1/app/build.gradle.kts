@@ -69,6 +69,10 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0") // Gson converter for Retrofit
     implementation(files("libs\\java-client-1.1.1.jar"))
+    implementation("androidx.appcompat:appcompat:1.6.1")
+
+    implementation ("com.squareup.picasso:picasso:2.71828")
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

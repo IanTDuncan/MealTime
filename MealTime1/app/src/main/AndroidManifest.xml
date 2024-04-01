@@ -110,6 +110,12 @@
             android:label="Meal Result"
             android:theme="@style/Theme.MealTime1" />
 
+        <!-- Add the declaration for MealResults -->
+        <activity
+            android:name=".MealResults"
+            android:label="Meal Result"
+            android:theme="@style/Theme.MealTime1" />
+
         <!-- Add the declaration for PasswordChangeActivity -->
         <activity
             android:name=".PasswordChangeActivity"

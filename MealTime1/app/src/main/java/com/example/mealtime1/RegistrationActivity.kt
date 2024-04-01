@@ -20,9 +20,9 @@ class RegistrationActivity : ComponentActivity() {
         setContentView(R.layout.registration_activity)
 
 
-        editTextNewUsername = findViewById(R.id.editTextNewUsername)
-        editTextNewPassword = findViewById(R.id.editTextNewPassword)
-        buttonRegister = findViewById(R.id.buttonRegister)
+        //editTextNewUsername = findViewById(R.id.editTextNewUsername)
+        ///editTextNewPassword = findViewById(R.id.editTextNewPassword)
+        //buttonRegister = findViewById(R.id.buttonRegister)
         buttonBack = findViewById(R.id.buttonBack)
 
         buttonRegister.setOnClickListener {

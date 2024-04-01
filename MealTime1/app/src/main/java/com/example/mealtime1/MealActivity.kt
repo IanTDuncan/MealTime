@@ -4,87 +4,85 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.activity.ComponentActivity
+import com.spoonacular.MealPlanningApi
+import com.spoonacular.client.ApiClient
+import com.spoonacular.client.ApiException
+import com.spoonacular.client.Configuration
+import com.spoonacular.client.auth.ApiKeyAuth
 import com.spoonacular.client.model.GenerateMealPlan200Response
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import java.math.BigDecimal
 
-class MealActivity: ComponentActivity() {
+class MealActivity : ComponentActivity() {
     private lateinit var buttonBackToMainMenu: Button
     private lateinit var editTextCostLimit: EditText
     private lateinit var editTextCalorieLimit: EditText
     private lateinit var editTextLimitAmount: EditText
     private lateinit var buttonSaveOptions: Button
     private lateinit var buttonGenerateMeal: Button
+    private lateinit var radioTimeFrame: RadioGroup
+    private lateinit var radioDiet: RadioGroup
 
-    private val service: MealPlanningService by lazy {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.spoonacular.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        retrofit.create(MealPlanningService::class.java)
-    }
+    // Global variable to store meal info
+    private lateinit var mealIds: Set<Int>
+    private lateinit var mealTitles: Set<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.meal_activity)
 
         buttonBackToMainMenu = findViewById(R.id.backButton)
-        ///editTextCostLimit = findViewById(R.id.costLimitEditText)
-        ///editTextCalorieLimit = findViewById(R.id.calorieLimitEditText)
-        ///editTextLimitAmount = findViewById(R.id.limitAmountEditText)
-        ///buttonSaveOptions = findViewById(R.id.saveOptionsButton)
         buttonGenerateMeal = findViewById(R.id.generateMealButton)
-
+        editTextCalorieLimit = findViewById(R.id.lowRange)
+        radioTimeFrame = findViewById(R.id.weekOptions)
+        radioDiet = findViewById(R.id.dietRadioGroup)
 
         buttonBackToMainMenu.setOnClickListener {
             val intent = Intent(this, MainMenuActivity::class.java)
             startActivity(intent)
         }
 
-        buttonSaveOptions.setOnClickListener {
-            val costLimit = editTextCostLimit.text.toString()
-            val calorieLimit = editTextCalorieLimit.text.toString()
-            val limitAmount = editTextLimitAmount.text.toString()
-            // Save user options
-            // Implement your logic here to save user options
-        }
-
         buttonGenerateMeal.setOnClickListener {
-            val costLimit = editTextCostLimit.text.toString()
-            val calorieLimit = editTextCalorieLimit.text.toString()
-            val limitAmount = editTextLimitAmount.text.toString()
+            // Configure API client
+            val defaultClient = Configuration.getDefaultApiClient()
+            defaultClient.basePath = "https://api.spoonacular.com"
 
-            // Make API call asynchronously
-            val call = service.generateMealPlan(
-                "day",  // timeFrame
-                2000.toBigDecimal(),  // targetCalories
-                "vegetarian",  // diet
-                "shellfish,olives",  // exclude
-                "faadc412663942a8909197924745241d" // Replace with your actual API key
-            )
+            // Configure API key authorization
+            val apiKeyScheme = defaultClient.getAuthentication("apiKeyScheme") as ApiKeyAuth
+            apiKeyScheme.apiKey = "faadc412663942a8909197924745241d"
 
-            call.enqueue(object : Callback<GenerateMealPlan200Response> {
-                override fun onResponse(
-                    call: Call<GenerateMealPlan200Response>,
-                    response: Response<GenerateMealPlan200Response>
-                ) {
-                    if (response.isSuccessful) {
-                        val result = response.body()
-                        println(result)
-                    } else {
-                        println("Failed to generate meal plan. Code: ${response.code()}")
-                    }
-                }
+            // Instantiate MealPlanningApi
+            val apiInstance = MealPlanningApi(defaultClient)
 
-                override fun onFailure(call: Call<GenerateMealPlan200Response>, t: Throwable) {
-                    println("Failed to generate meal plan. Error: ${t.message}")
-                }
-            })
+            // Get selected radio button for time frame
+            val selectedTimeFrameId = radioTimeFrame.checkedRadioButtonId
+            val radioButtonTimeFrame = findViewById<RadioButton>(selectedTimeFrameId)
+            val timeFrame = radioButtonTimeFrame?.text?.toString()?.lowercase() ?: "day"
+
+            // Get selected radio button for diet
+            val selectedDietId = radioDiet.checkedRadioButtonId
+            val radioButtonDiet = findViewById<RadioButton>(selectedDietId)
+            val diet = if (selectedDietId != -1) radioButtonDiet?.text?.toString()?.lowercase() else null
+
+            val targetCalories = BigDecimal(editTextCalorieLimit.text.toString())
+            val exclude = "shellfish, olives"
+
+            try {
+                val result = apiInstance.generateMealPlan(timeFrame, targetCalories, diet, exclude)
+                // Extract meal info and store as global variables
+                mealIds = result.meals.map { it.id }.toSet()
+                mealTitles = result.meals.map { it.title }.toSet()
+                val intent = Intent(this, MealResults::class.java)
+                startActivity(intent)
+            } catch (e: ApiException) {
+                println("Exception when calling MealPlanningApi#generateMealPlan")
+                println("Status code: ${e.code}")
+                println("Reason: ${e.responseBody}")
+                println("Response headers: ${e.responseHeaders}")
+                e.printStackTrace()
+            }
         }
     }
 }
