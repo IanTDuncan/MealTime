@@ -5,6 +5,7 @@ import com.spoonacular.client.model.DeleteFromMealPlanRequest;
 import com.spoonacular.client.model.GenerateMealPlan200Response;
 import com.spoonacular.client.model.GenerateShoppingList200Response;
 import com.spoonacular.client.model.GenerateShoppingListRequest;
+import com.spoonacular.client.model.GetRecipeInformation200Response;
 import com.spoonacular.client.model.GetShoppingList200Response;
 
 import java.math.BigDecimal;
@@ -14,6 +15,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface MealPlanningService {
@@ -23,6 +25,13 @@ public interface MealPlanningService {
             @Query("targetCalories") BigDecimal targetCalories,
             @Query("diet") String diet,
             @Query("exclude") String exclude,
+            @Query("apiKey") String apiKey
+    );
+
+    @GET("recipes/{id}/information")
+    Call<GetRecipeInformation200Response> getRecipes(
+            @Path("id") Integer id,
+            @Query("includeNutrition") Boolean includeNutrition,
             @Query("apiKey") String apiKey
     );
 

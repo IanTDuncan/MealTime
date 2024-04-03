@@ -2,66 +2,96 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <TextView
-        android:id="@+id/mealName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="117dp"
-        android:layout_marginTop="69dp"
-        android:text="Meal Name"
-        android:textSize="35sp" />
+    android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/backbutton"
+        android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
         android:text="Back" />
 
     <TextView
-        android:id="@+id/calorieAmountText"
+        android:id="@+id/text_meal_name1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="141dp"
-        android:text="Calorie Amount:"
-        android:textSize="25sp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Meal 1 Name"
+        android:layout_below="@id/backButton"
+        android:textColor="@android:color/white" />
 
-    <EditText
-        android:id="@+id/editTextNumber"
+    <TextView
+        android:id="@+id/text_meal_name2"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_meal_name1"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="171dp"
+        android:text="Meal 2 Name"
+        android:textColor="@android:color/white" />
+
+    <!-- Image Views for Meal Images -->
+
+    <!-- Buttons to Go Back and Save the Meal -->
+
+    <TextView
+        android:id="@+id/text_meal_name3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_meal_name2"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="167dp"
+        android:text="Meal 3 Name"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/image_meal1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/text_meal_name1"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <ImageView
+        android:id="@+id/image_meal2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/text_meal_name2"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <ImageView
+        android:id="@+id/image_meal3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/text_meal_name3"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:id="@+id/btn_go_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_meal3"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="673dp"
+        android:text="Re-Generate" />
+
+    <Button
+        android:id="@+id/btn_save_meal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_meal3"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="139dp"
-        android:layout_marginEnd="12dp"
-        android:layout_toEndOf="@+id/calorieAmountText"
-        android:ems="10"
-        android:hint="Calories in meal"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/ingredientsList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="203dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="List of ingredients + nutrients"
-        android:inputType="textMultiLine" />
+        android:layout_marginTop="717dp"
+        android:layout_marginEnd="0dp"
+        android:text="Save Meal" />
 
 </RelativeLayout>
