@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"> <!-- Set background color to white -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
+
+    <LinearLayout
+        android:id="@+id/footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"> <!-- Set background color to white -->
+
+        <Button
+            android:id="@+id/add_button"
+            style="@style/TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/remove_button"
+            style="@style/TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Remove"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/generate_list_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generate New Shopping List"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        style="@style/TextButton" /> <!-- Apply style for text button -->
+
+</RelativeLayout>

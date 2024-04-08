@@ -8,15 +8,7 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.activity.ComponentActivity
-import com.spoonacular.MealPlanningApi
-import com.spoonacular.client.ApiException
-import com.spoonacular.client.Configuration
-import com.spoonacular.client.auth.ApiKeyAuth
 import com.spoonacular.client.model.GenerateMealPlan200Response
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

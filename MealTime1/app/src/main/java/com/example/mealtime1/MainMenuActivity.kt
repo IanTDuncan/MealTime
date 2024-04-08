@@ -27,7 +27,7 @@ class MainMenuActivity: ComponentActivity() {
         }
 
         buttonGroceryList.setOnClickListener {
-            val intent= Intent(this, GroceryListActivity::class.java)
+            val intent= Intent(this, ShoppingListActivity::class.java)
             startActivity(intent)
         }
 

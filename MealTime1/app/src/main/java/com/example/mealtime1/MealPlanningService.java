@@ -6,6 +6,8 @@ import com.spoonacular.client.model.GenerateMealPlan200Response;
 import com.spoonacular.client.model.GenerateShoppingList200Response;
 import com.spoonacular.client.model.GenerateShoppingListRequest;
 import com.spoonacular.client.model.GetRecipeInformation200Response;
+import com.spoonacular.client.model.GetRecipeNutritionWidgetByID200Response;
+import com.spoonacular.client.model.GetRecipePriceBreakdownByID200Response;
 import com.spoonacular.client.model.GetShoppingList200Response;
 
 import java.math.BigDecimal;
@@ -32,6 +34,18 @@ public interface MealPlanningService {
     Call<GetRecipeInformation200Response> getRecipes(
             @Path("id") Integer id,
             @Query("includeNutrition") Boolean includeNutrition,
+            @Query("apiKey") String apiKey
+    );
+
+    @GET("recipes/{id}/priceBreakdownWidget.json")
+    Call<GetRecipePriceBreakdownByID200Response> getRecipeCost(
+            @Path("id") int id,
+            @Query("apiKey") String apiKey
+    );
+
+    @GET("recipes/{id}/nutritionWidget.json")
+    Call<GetRecipeNutritionWidgetByID200Response> getNutrition(
+            @Path("id") Integer id,
             @Query("apiKey") String apiKey
     );
 

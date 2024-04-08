@@ -105,8 +105,8 @@
             android:label="Privacy Policy"
             android:theme="@style/Theme.AppCompat.DeviceDefault" /> <!-- Add the declaration for UserProfileActivity -->
         <activity
-            android:name=".UserProfileActivity"
-            android:label="User Profile"
+            android:name=".ShoppingListActivity"
+            android:label="Shopping List"
             android:theme="@style/Theme.AppCompat.DeviceDefault" />
     </application>
 

@@ -1,47 +1,91 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <!-- Title: Grocery List -->
-    <TextView
-        android:id="@+id/textViewGroceryListTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:text="Grocery List"
-        android:textSize="24sp" />
-
-    <!-- Scrollable ListView for Grocery Items -->
-    <ListView
-        android:id="@+id/listViewGroceryItems"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewGroceryListTitle"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="75dp" />
-
-
-    <!-- Back Button -->
-    <Button
-        android:id="@+id/buttonBackToMainMenu"
-        android:layout_width="111dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="Back" />
-
-</RelativeLayout>
-<!--
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:text="Header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_toEndOf="@id/back_button"
+            android:layout_toRightOf="@id/back_button"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@+id/generate_list_button"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
+
+    <LinearLayout
+        android:id="@+id/footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/remove_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Remove"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/generate_list_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generate New Shopping List"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:text="Footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/generate_list_button"
+        android:gravity="center"
+        android:padding="16dp"
+        android:id="@+id/footer_text"/>
+
+</RelativeLayout>
