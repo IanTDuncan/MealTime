@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     // Add the dependency for the Google services Gradle plugin
-    id("com.google.gms.google-services") version "4.4.1" apply false
+    id("com.google.gms.google-services")
 
 }
 
@@ -61,7 +61,7 @@ val sourcesJar by tasks.registering(Jar::class) {
 dependencies {
 
     implementation (platform("com.google.firebase:firebase-bom:32.8.0"))
-    implementation ("com.google.firebase:firebase-analytics-ktx")
+    implementation ("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-database-ktx")
     implementation ("com.squareup.picasso:picasso:2.71828")
     implementation ("com.stripe:stripe-android:8.1.0")
