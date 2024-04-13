@@ -10,7 +10,7 @@ import android.widget.TextView
 class MainMenuActivity: ComponentActivity() {
     private lateinit var buttonGenerateMeal: Button
     private lateinit var buttonGroceryList: Button
-    private lateinit var buttonMyBookmarks: Button
+ //   private lateinit var buttonMyBookmarks: Button
     private lateinit var buttonMyAccount: Button
     private lateinit var textView: TextView
     private lateinit var textView2: TextView
@@ -21,10 +21,10 @@ class MainMenuActivity: ComponentActivity() {
 
         buttonGenerateMeal = findViewById(R.id.buttonGenerateMeal)
         buttonGroceryList = findViewById(R.id.buttonGroceryList)
-        buttonMyBookmarks = findViewById(R.id.buttonMyBookmarks)
+   //     buttonMyBookmarks = findViewById(R.id.buttonMyBookmarks)
         buttonMyAccount = findViewById(R.id.buttonMyAccount)
-        textView = findViewById(R.id.textView) //terms and conditions
-        textView2 = findViewById(R.id.textView2) //privacy policy
+      //  textView = findViewById(R.id.textView) //terms and conditions
+       // textView2 = findViewById(R.id.textView2) //privacy policy
 
 
         buttonGenerateMeal.setOnClickListener {
@@ -37,13 +37,13 @@ class MainMenuActivity: ComponentActivity() {
             startActivity(intent)
         }
 
-        buttonMyBookmarks.setOnClickListener {
-            val intent= Intent(this, MyBookmarksActivity::class.java)
-            startActivity(intent)
-        }
+      //  buttonMyBookmarks.setOnClickListener {
+        //    val intent= Intent(this, MyBookmarksActivity::class.java)
+      //      startActivity(intent)
+     //   }
 
         buttonMyAccount.setOnClickListener {
-            val intent = Intent(this, MyAccountActivity::class.java)
+            val intent = Intent(this, AccountAboutActivity::class.java)
             startActivity(intent)
         }
 

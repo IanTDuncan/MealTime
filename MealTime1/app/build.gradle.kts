@@ -62,6 +62,11 @@ dependencies {
 
     implementation (platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation ("com.google.firebase:firebase-analytics")
+    //implementation ("com.google.firebase:firebase-analytics-ktx")
+    implementation ("com.google.android.material:material:1.11.0")
+    implementation ("com.android.support:design:28.0.0")
+    implementation ("com.android.support:appcompat-v7:28.0.0")
+    implementation ("com.android.support:support-v4:28.0.0")
     implementation ("com.google.firebase:firebase-database-ktx")
     implementation ("com.squareup.picasso:picasso:2.71828")
     implementation ("com.stripe:stripe-android:8.1.0")

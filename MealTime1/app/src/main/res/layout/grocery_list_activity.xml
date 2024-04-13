@@ -2,7 +2,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:elevation="0dp"
+        android:id="@+id/appbar"
+        android:background="@color/lettuce_green"
+        >
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <!-- Title: Grocery List -->
     <TextView
@@ -12,8 +25,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
+        android:textColor="@color/white"
         android:text="Grocery List"
-        android:textSize="24sp" />
+        android:textSize="40sp" />
 
     <!-- Scrollable ListView for Grocery Items -->
     <ListView
@@ -26,17 +40,31 @@
 
 
     <!-- Back Button -->
+
+
+    <Button
+        android:id="@+id/generateShoppingList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="33dp"
+        android:text="Get My List!" />
+
     <Button
         android:id="@+id/buttonBackToMainMenu"
-        android:layout_width="111dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Back" />
+        android:background="@drawable/ic_arrow_back"
+        />
 
 </RelativeLayout>
 <!--
