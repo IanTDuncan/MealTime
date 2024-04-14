@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center"
@@ -14,7 +14,7 @@
         android:id="@+id/appbar"
         android:background="@color/lettuce_green"
         >
-    </com.google.android.material.appbar.AppBarLayout>
+    </FrameLayout>
 
         <Button
             android:id="@+id/buttonBackToMyAccount"
@@ -56,7 +56,7 @@
         android:layout_marginTop="80dp"
         android:fontFamily="sans-serif-black"
         android:textColor="@color/black"
-        android:background="@color/lettuce_green"
+        android:background="@color/white"
         android:text="If you have any questions or concerns, feel free to contact us at the email below!"
         android:textSize="24sp" />
     <!--Going to add some more texture to above background -->
@@ -69,6 +69,7 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="166dp"
+        android:gravity="center"
         android:fontFamily="sans-serif-black"
         android:textColor="@color/black"
         android:background="@color/lettuce_green"

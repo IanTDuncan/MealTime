@@ -6,14 +6,16 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
 import android.widget.TextView
+import com.google.android.material.appbar.AppBarLayout
 
 class MainMenuActivity: ComponentActivity() {
     private lateinit var buttonGenerateMeal: Button
     private lateinit var buttonGroceryList: Button
  //   private lateinit var buttonMyBookmarks: Button
     private lateinit var buttonMyAccount: Button
-    private lateinit var textView: TextView
-    private lateinit var textView2: TextView
+    private lateinit var appBar: AppBarLayout
+  //  private lateinit var textView: TextView
+   // private lateinit var textView2: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +25,7 @@ class MainMenuActivity: ComponentActivity() {
         buttonGroceryList = findViewById(R.id.buttonGroceryList)
    //     buttonMyBookmarks = findViewById(R.id.buttonMyBookmarks)
         buttonMyAccount = findViewById(R.id.buttonMyAccount)
+       // appBar = findViewById(R.id.appbar)
       //  textView = findViewById(R.id.textView) //terms and conditions
        // textView2 = findViewById(R.id.textView2) //privacy policy
 
@@ -48,18 +51,18 @@ class MainMenuActivity: ComponentActivity() {
         }
 
         //terms and conditions
-        textView.setOnClickListener {
-            val url = "https://publuu.com/flip-book/403736/913832"
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            startActivity(intent)
-        }
+   //     textView.setOnClickListener {
+       //     val url = "https://publuu.com/flip-book/403736/913832"
+      //      val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+         //   startActivity(intent)
+      //  }
 
         //privacy policy
-        textView2.setOnClickListener {
-            val url = "https://publuu.com/flip-book/403736/913836"
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            startActivity(intent)
-        }
+      //  textView2.setOnClickListener {
+      //      val url = "https://publuu.com/flip-book/403736/913836"
+      //      val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+       //     startActivity(intent)
+      //  }
 
 
 

@@ -6,15 +6,15 @@
     android:background="@color/white">
 
 
-    <com.google.android.material.appbar.AppBarLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center"
         android:elevation="0dp"
         android:id="@+id/appbar"
         android:background="@color/lettuce_green"
-        >
-    </com.google.android.material.appbar.AppBarLayout>
+        />
+
 
 
     <!-- Title: Grocery List -->
