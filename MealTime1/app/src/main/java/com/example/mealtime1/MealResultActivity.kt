@@ -1,12 +1,14 @@
 package com.example.mealtime1
 
 import android.content.Intent
+
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.spoonacular.client.model.GetRecipeInformation200Response
 import com.squareup.picasso.Picasso
 import retrofit2.Call
@@ -15,41 +17,24 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MealResultActivity: ComponentActivity() {
-    private lateinit var text_meal_name1: TextView
-    private lateinit var text_meal_name2: TextView
-    private lateinit var text_meal_name3: TextView
+class MealResultActivity : ComponentActivity() {
 
-    private lateinit var image_meal1: ImageView
-    private lateinit var image_meal2: ImageView
-    private lateinit var image_meal3: ImageView
+    private lateinit var backButton: Button
+    private lateinit var regenerateButton: Button
+    private lateinit var saveMealButton: Button
+    private lateinit var mealRecyclerView: RecyclerView
 
-    private lateinit var btn_go_back: Button
-    private lateinit var btn_save_meal: Button
-    private lateinit var backtoMainMenu: Button
-
-    private lateinit var mealIds: Set<Int>
-    private val recipeImages: MutableMap<Int, String> = mutableMapOf()
-    private val recipeTitles: MutableMap<Int, String> = mutableMapOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.meal_result_activity)
 
-        text_meal_name1 = findViewById(R.id.text_meal_name1)
-        text_meal_name2 = findViewById(R.id.text_meal_name2)
-        text_meal_name3 = findViewById(R.id.text_meal_name3)
-
-        image_meal1 = findViewById(R.id.image_meal1)
-        image_meal2 = findViewById(R.id.image_meal2)
-        image_meal3 = findViewById(R.id.image_meal3)
-
-        btn_go_back = findViewById(R.id.btn_go_back)
-        btn_save_meal = findViewById(R.id.btn_save_meal)
-        backtoMainMenu = findViewById(R.id.backButton)
+        backButton = findViewById(R.id.backButton)
+        regenerateButton = findViewById(R.id.btn_go_back)
+        saveMealButton = findViewById(R.id.btn_save_meal)
+        mealRecyclerView = findViewById(R.id.mealRecyclerView)
+        mealRecyclerView.layoutManager = LinearLayoutManager(this)
 
         val mealIds = intent.getIntArrayExtra("mealIds") ?: intArrayOf()
-
-
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.spoonacular.com/")
@@ -57,10 +42,13 @@ class MealResultActivity: ComponentActivity() {
             .build()
 
         val service = retrofit.create(MealPlanningService::class.java)
-        val apiKey = "faadc412663942a8909197924745241d"
+        val apiKey = "2b78d859d01c4e9c84d93a87691bf450"
 
+        val meals = mutableListOf<Meal>()
+        val adapter = MealAdapter(meals)
+        mealRecyclerView.adapter = adapter
         mealIds.forEachIndexed { index, id ->
-            val call = service.getRecipes(id, false,apiKey)
+            val call = service.getRecipes(id, true, apiKey)
             call.enqueue(object : Callback<GetRecipeInformation200Response> {
                 override fun onResponse(call: Call<GetRecipeInformation200Response>, response: Response<GetRecipeInformation200Response>) {
                     if (response.isSuccessful) {
@@ -68,23 +56,10 @@ class MealResultActivity: ComponentActivity() {
                         result?.let {
                             val image = it.image
                             image?.let { img ->
-                                recipeImages[id] = img
-                                when (index) {
-                                    0 -> {
-                                        Picasso.get().load(img).into(image_meal1)
-                                        text_meal_name1.text = it.title
-                                    }
-                                    1 -> {
-                                        Picasso.get().load(img).into(image_meal2)
-                                        text_meal_name2.text = it.title
-                                    }
-                                    2 -> {
-                                        Picasso.get().load(img).into(image_meal3)
-                                        text_meal_name3.text = it.title
-                                    }
-                                }
+                                val meal = Meal(it.title ?: "Meal $id", img, id)
+                                meals.add(meal)
+                                adapter.notifyItemInserted(meals.size - 1)
                             }
-                            recipeTitles[id] = it.title
                         }
                     } else {
                         Log.e("MealResults", "Failed to get recipe information for ID: $id")
@@ -97,10 +72,9 @@ class MealResultActivity: ComponentActivity() {
             })
         }
 
-        backtoMainMenu.setOnClickListener {
-            val intent = Intent(this, GenerateMealActivity::class.java)
+        backButton.setOnClickListener {
+            val intent = Intent(this, MainMenuActivity::class.java)
             startActivity(intent)
         }
-
     }
 }

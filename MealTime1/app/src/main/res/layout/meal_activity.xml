@@ -68,6 +68,8 @@
         android:background="@drawable/button_border"
         android:text="Generate a meal!" />
 
+
+
     <!-- Scrollview containing all options to narrow down meal generation -->
     <ScrollView
         android:layout_width="match_parent"
