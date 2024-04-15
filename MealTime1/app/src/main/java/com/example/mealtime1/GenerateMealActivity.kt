@@ -1,8 +1,12 @@
 package com.example.mealtime1
 
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
@@ -39,6 +43,7 @@ class GenerateMealActivity: ComponentActivity() {
     private lateinit var mealIds: Set<Int>
     private lateinit var mealTitles: Set<String>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.meal_activity)
@@ -48,6 +53,7 @@ class GenerateMealActivity: ComponentActivity() {
         editTextCalorieLimit = findViewById(R.id.lowRange)
         radioTimeFrame = findViewById(R.id.weekOptions)
         radioDiet = findViewById(R.id.dietRadioGroup)
+
 
 
         val retrofit = Retrofit.Builder()
@@ -63,11 +69,39 @@ class GenerateMealActivity: ComponentActivity() {
             startActivity(intent)
         }
 
+
+
         buttonGenerateMeal.setOnClickListener {
-           if(editTextCalorieLimit.text == null){
-               Toast.makeText(applicationContext, "Please enter a calorie limit!", Toast.LENGTH_SHORT).show()
+            val context: Context = buttonGenerateMeal.context
+            val calText = editTextCalorieLimit.text.toString()
+           if(calText.isEmpty()){
+
+               val builder = android.app.AlertDialog.Builder(context)
+               builder.setTitle("Not all requirements are filled.")
+               builder.setMessage("Please go back and fill in your calorie limit.")
+               builder.setPositiveButton("OK",null)
+               val dialog: AlertDialog = builder.create()
+               dialog.show()
            }
+            else if(radioTimeFrame.checkedRadioButtonId == -1){
+               val builder = android.app.AlertDialog.Builder(context)
+               builder.setTitle("Not all requirements are filled.")
+               builder.setMessage("Please check whether you're planning for the day or week.")
+               builder.setPositiveButton("OK",null)
+               val dialog: AlertDialog = builder.create()
+               dialog.show()
+            }
+            else if(calText.isEmpty() && radioTimeFrame.checkedRadioButtonId == -1){
+               val builder = android.app.AlertDialog.Builder(context)
+               builder.setTitle("Not all requirements are filled.")
+               builder.setMessage("Please pick your time frame and fill out your calorie limit.")
+               builder.setPositiveButton("OK",null)
+               val dialog: AlertDialog = builder.create()
+               dialog.show()
+            }
             else {
+               val dialog = (buttonGenerateMeal.context as? AlertDialog)
+               dialog?.dismiss()
                try {
                    // Get selected radio button for time frame
                    val selectedTimeFrameId = radioTimeFrame.checkedRadioButtonId

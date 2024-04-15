@@ -34,25 +34,26 @@
         android:layout_width="125dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="692dp"
+        android:layout_marginTop="700dp"
         android:gravity="center"
         android:text="Re-Generate"
         android:background="@drawable/button_border"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
         android:id="@+id/btn_save_meal"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_marginTop="692dp"
+        android:layout_marginTop="700dp"
         android:layout_marginEnd="25dp"
+        android:layout_marginBottom="0dp"
         android:gravity="center"
         android:text="Save Meal"
         android:background="@drawable/button_border"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

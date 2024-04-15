@@ -76,5 +76,10 @@ class MealResultActivity : ComponentActivity() {
             val intent = Intent(this, MainMenuActivity::class.java)
             startActivity(intent)
         }
+
+        regenerateButton.setOnClickListener {
+            val intent = Intent(this, GenerateMealActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
