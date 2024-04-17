@@ -29,7 +29,7 @@ class MealAdapter(private val meals: List<Meal>, ) : RecyclerView.Adapter<MealAd
         .build()
 
     val service = retrofit.create(MealPlanningService::class.java)
-    val apiKey = "2b78d859d01c4e9c84d93a87691bf450"
+    val apiKey = "faadc412663942a8909197924745241d"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.meal_item, parent, false)
@@ -57,8 +57,14 @@ class MealAdapter(private val meals: List<Meal>, ) : RecyclerView.Adapter<MealAd
         fun bind(meal: Meal) {
             this.meal = meal
             mealNameTextView.text = meal.name
-            Picasso.get().load(meal.imageUrl).into(mealImageView)
+            if (meal.imageUrl != null) {
+                Picasso.get().load(meal.imageUrl).into(mealImageView)
+            } else {
+                // Load placeholder image if meal.imageUrl is null
+                Picasso.get().load(R.drawable.ic_image_na).into(mealImageView)
+            }
         }
+
 
         override fun onClick(view: View) {
             alertDialog?.dismiss()
