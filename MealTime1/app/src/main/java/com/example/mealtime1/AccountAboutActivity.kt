@@ -21,7 +21,7 @@ class AccountAboutActivity: ComponentActivity() {
         buttonPrivacyPolicy = findViewById(R.id.buttonPrivacyPolicy)
 
         buttonBack.setOnClickListener{
-            val intent = Intent(this, MyAccountActivity::class.java)
+            val intent = Intent(this, MainMenuActivity::class.java)
             startActivity(intent)
         }
 

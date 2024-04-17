@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:elevation="0dp"
+        android:id="@+id/appbar"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:background="@color/lettuce_green">
     <!-- Back button to go back a page -->
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        android:text="Back" />
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/ic_arrow_back" />
+    </FrameLayout>
 
     <!-- Radio group for time frame selection -->
 
@@ -21,15 +32,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/backButton"
+        android:layout_below="@id/appbar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp">
+
 
         <!-- Toggles for breakfast meals -->
         <RadioButton
             android:id="@+id/weekdaySwitch"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
+            android:textColor="@color/black"
             android:text="day" />
 
         <!-- Toggles for full week meals -->
@@ -37,20 +50,25 @@
             android:id="@+id/fullWeekSwitch"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
+            android:textColor="@color/black"
             android:text="week" />
     </RadioGroup>
 
     <!-- Generate meal button -->
     <Button
         android:id="@+id/generateMealButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="151dp"
+        android:layout_marginEnd="125dp"
         android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:background="@drawable/button_border"
         android:text="Generate a meal!" />
+
+
 
     <!-- Scrollview containing all options to narrow down meal generation -->
     <ScrollView
@@ -59,70 +77,85 @@
         android:layout_below="@id/weekOptions"
         android:layout_above="@+id/generateMealButton"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:background="@color/lettuce_green">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
+
 
             <!-- Informs what category is next -->
             <TextView
                 android:id="@+id/allergiesView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
                 android:text="Allergies"
-                android:textSize="35sp" />
+                android:textSize="40sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
 
             <!-- dairy allergy option -->
             <CheckBox
                 android:id="@+id/dairyAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:text="Dairy" />
+                android:text="Dairy"
+                android:textColor="@color/black"/>
 
             <!-- Egg allergy option -->
             <CheckBox
                 android:id="@+id/eggAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:text="Eggs" />
+                android:text="Eggs"
+                android:textColor="@color/black"/>
 
             <!-- nut allergy option -->
             <CheckBox
                 android:id="@+id/nutAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:text="Nuts" />
+                android:text="Nuts"
+                android:textColor="@color/black"/>
 
             <!-- wheat allergy option -->
             <CheckBox
                 android:id="@+id/wheatAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:text="Wheat" />
+                android:text="Wheat"
+                android:textColor="@color/black"/>
 
             <!-- Soy allergy option -->
             <CheckBox
                 android:id="@+id/soyAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:text="Soy" />
+                android:text="Soy"
+                android:textColor="@color/black"/>
 
             <!-- Fish allergy option -->
             <CheckBox
                 android:id="@+id/fishAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:text="Fish" />
+                android:text="Fish"
+                android:textColor="@color/black"/>
 
             <!-- Informs what category is next -->
             <TextView
                 android:id="@+id/dietSeparator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:text="Dietary Restrictions"
-                android:textSize="35sp" />
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="40sp" />
 
             <!-- Radio group for diet selection -->
             <RadioGroup
@@ -131,82 +164,94 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+
                 <!-- Vegan option for diets -->
                 <RadioButton
                     android:id="@+id/vegan"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="Vegan" />
+                    android:text="Vegan"
+                    android:textColor="@color/black"/>
 
                 <!-- Gluten-Free option for diets -->
                 <RadioButton
                     android:id="@+id/glutenFree"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="Gluten-Free" />
+                    android:text="Gluten-Free"
+                    android:textColor="@color/black"/>
 
                 <!-- Ketogenic option for diets -->
                 <RadioButton
                     android:id="@+id/ketogenic"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="Ketogenic" />
+                    android:text="Ketogenic"
+                    android:textColor="@color/black"/>
 
                 <!-- Vegetarian option for diets -->
                 <RadioButton
                     android:id="@+id/vegetarian"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="Vegetarian" />
+                    android:text="Vegetarian"
+                    android:textColor="@color/black"/>
 
                 <!-- Lacto-Vegetarian option for diets -->
                 <RadioButton
                     android:id="@+id/lactoVegetarian"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="Lacto-Vegetarian" />
+                    android:text="Lacto-Vegetarian"
+                    android:textColor="@color/black"/>
 
                 <!-- Ovo-Vegetarian option for diets -->
                 <RadioButton
                     android:id="@+id/ovoVegetarian"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="Ovo-Vegetarian" />
+                    android:text="Ovo-Vegetarian"
+                    android:textColor="@color/black"/>
 
                 <!-- Pescetarian option for diets -->
                 <RadioButton
                     android:id="@+id/pescetarian"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="Pescetarian" />
+                    android:text="Pescetarian"
+                    android:textColor="@color/black"/>
 
                 <!-- Paleo option for diets -->
                 <RadioButton
                     android:id="@+id/paleo"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="Paleo" />
+                    android:text="Paleo"
+                    android:textColor="@color/black"/>
 
                 <!-- Primal option for diets -->
                 <RadioButton
                     android:id="@+id/primal"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="Primal" />
+                    android:text="Primal"
+                    android:textColor="@color/black"/>
 
                 <!-- Low FODMAP option for diets -->
                 <RadioButton
                     android:id="@+id/lowFodmap"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="Low FODMAP" />
+                    android:text="Low FODMAP"
+                    android:textColor="@color/black"/>
 
                 <!-- Whole30 option for diets -->
                 <RadioButton
                     android:id="@+id/whole30"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="Whole30" />
+                    android:text="Whole30"
+                    android:textColor="@color/black"/>
             </RadioGroup>
 
             <!-- Informing what the next category is-->
@@ -215,7 +260,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Target Calories"
-                android:textSize="25sp" />
+                android:textSize="40sp"
+                android:textColor="@color/white"/>
 
             <!-- Highest amount of calories you want in one meal-->
             <EditText

@@ -42,14 +42,13 @@ class MealResultActivity : ComponentActivity() {
             .build()
 
         val service = retrofit.create(MealPlanningService::class.java)
-        val apiKey = "faadc412663942a8909197924745241d"
+        val apiKey = "2b78d859d01c4e9c84d93a87691bf450"
 
         val meals = mutableListOf<Meal>()
         val adapter = MealAdapter(meals)
         mealRecyclerView.adapter = adapter
-
         mealIds.forEachIndexed { index, id ->
-            val call = service.getRecipes(id, false, apiKey)
+            val call = service.getRecipes(id, true, apiKey)
             call.enqueue(object : Callback<GetRecipeInformation200Response> {
                 override fun onResponse(call: Call<GetRecipeInformation200Response>, response: Response<GetRecipeInformation200Response>) {
                     if (response.isSuccessful) {
@@ -57,7 +56,7 @@ class MealResultActivity : ComponentActivity() {
                         result?.let {
                             val image = it.image
                             image?.let { img ->
-                                val meal = Meal(it.title ?: "Meal $id", img)
+                                val meal = Meal(it.title ?: "Meal $id", img, id)
                                 meals.add(meal)
                                 adapter.notifyItemInserted(meals.size - 1)
                             }
@@ -75,6 +74,11 @@ class MealResultActivity : ComponentActivity() {
 
         backButton.setOnClickListener {
             val intent = Intent(this, MainMenuActivity::class.java)
+            startActivity(intent)
+        }
+
+        regenerateButton.setOnClickListener {
+            val intent = Intent(this, GenerateMealActivity::class.java)
             startActivity(intent)
         }
     }

@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-    <Button
-        android:id="@+id/buttonBackToMyAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Back" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:elevation="0dp"
+        android:id="@+id/appbar"
+        android:background="@color/lettuce_green"
+        >
+    </FrameLayout>
+
+        <Button
+            android:id="@+id/buttonBackToMyAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_arrow_back"
+            />
 
     <Button
         android:id="@+id/buttonForTerms"
@@ -17,7 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/button_shadow"
         android:text="Terms and Conditions" />
 
     <Button
@@ -27,6 +42,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="50dp"
         android:layout_marginTop="280dp"
+        android:background="@drawable/button_shadow"
         android:text="Privacy Policy and Security Terms" />
 
     <TextView
@@ -36,10 +52,28 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="sans-serif-black"
-        android:text="Contact Us: EMAIL HERE"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:text="If you have any questions or concerns, feel free to contact us at the email below!"
+        android:textSize="24sp" />
+    <!--Going to add some more texture to above background -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="166dp"
+        android:gravity="center"
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/black"
+        android:background="@color/lettuce_green"
+        android:text="EMAIL HERE"
         android:textSize="24sp" />
 
     <TextView
@@ -48,7 +82,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="161dp"
+        android:layout_marginBottom="11dp"
+        android:textColor="@color/black"
         android:text="This app uses Spoonacular Food API."
-        android:textSize="24sp" />
+        android:textSize="15sp" />
 </RelativeLayout>

@@ -69,7 +69,7 @@
             android:label="Options"
             android:theme="@style/Theme.AppCompat.DeviceDefault" /> <!-- Add the declaration for AccountSupportAction -->
         <activity
-            android:name=".AccountSupportAction"
+            android:name=".MyNotifications"
             android:label="Support"
             android:theme="@style/Theme.AppCompat.DeviceDefault" />
         <!--

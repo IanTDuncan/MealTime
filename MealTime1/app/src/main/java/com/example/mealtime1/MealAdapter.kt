@@ -23,13 +23,13 @@ class MealAdapter(private val meals: List<Meal>, ) : RecyclerView.Adapter<MealAd
 
     private var alertDialog: AlertDialog? = null
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.spoonacular.com/")
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-            .build()
+    val retrofit = Retrofit.Builder()
+        .baseUrl("https://api.spoonacular.com/")
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
+        .build()
 
-        val service = retrofit.create(MealPlanningService::class.java)
-        val apiKey = "faadc412663942a8909197924745241d"
+    val service = retrofit.create(MealPlanningService::class.java)
+    val apiKey = "faadc412663942a8909197924745241d"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.meal_item, parent, false)

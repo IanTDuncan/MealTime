@@ -12,6 +12,7 @@ import com.spoonacular.client.model.GetShoppingList200Response;
 
 import java.math.BigDecimal;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -21,6 +22,15 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface MealPlanningService {
+
+    @GET("recipes/{id}/nutritionLabel.png")
+    Call<ResponseBody> getNutritionImage(
+            @Path("id") BigDecimal id,
+            @Query("apiKey") String apiKey,
+            @Query("showOptionalNutrients") boolean showOptionalNutrients,
+            @Query("showZeroValues") boolean showZeroValues,
+            @Query("showIngredients") boolean showIngredients
+    );
     @GET("mealplanner/generate")
     Call<GenerateMealPlan200Response> generateMealPlan(
             @Query("timeFrame") String timeFrame,
