@@ -11,7 +11,7 @@ class SplashActivity : ComponentActivity() {
         setContentView(R.layout.activity_splash)
 
         val videoView = findViewById<VideoView>(R.id.Splash)
-        val videoPath = "android.resource://"+ packageName + "/" + R.raw.splashlogo
+        val videoPath = "android.resource://"+ packageName + "/" + R.raw.updatedsplashlogo
 
         val videoUri = Uri.parse(videoPath)
         videoView.setVideoURI(videoUri)
