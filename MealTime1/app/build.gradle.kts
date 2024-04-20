@@ -11,7 +11,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.mealtime1"
+        applicationId = "com.mealtime1.mealtime1"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

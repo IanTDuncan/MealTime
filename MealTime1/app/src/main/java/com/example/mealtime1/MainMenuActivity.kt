@@ -1,11 +1,9 @@
 package com.example.mealtime1
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
-import android.widget.TextView
 import com.google.android.material.appbar.AppBarLayout
 
 class MainMenuActivity: ComponentActivity() {
