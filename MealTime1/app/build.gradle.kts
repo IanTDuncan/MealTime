@@ -60,6 +60,10 @@ val sourcesJar by tasks.registering(Jar::class) {
 
 dependencies {
 
+    implementation ("androidx.sqlite:sqlite:2.2.0")
+    implementation ("androidx.sqlite:sqlite-ktx:2.2.0")
+
+
     implementation ("com.google.android.material:material:1.5.0-alpha01")
     implementation ("androidx.viewpager2:viewpager2:1.1.0-alpha01")
     implementation ("androidx.appcompat:appcompat:1.4.0")
