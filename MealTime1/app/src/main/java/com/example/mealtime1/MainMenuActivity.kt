@@ -38,9 +38,12 @@ class MainMenuActivity: ComponentActivity() {
             val newDeviceId = DeviceIdManager.generateDeviceId()
             DeviceIdManager.saveDeviceId(this, newDeviceId)
         }
+        else {
+            println("Meal ID Retrieved")
+        }
 
 
-        val hasResults = dbHelper.hasResults(deviceId)
+        val hasResults = dbHelper.hasResults()
         if (hasResults) {
             // If results exist, navigate to a different activity
             buttonGenerateMeal.setOnClickListener {

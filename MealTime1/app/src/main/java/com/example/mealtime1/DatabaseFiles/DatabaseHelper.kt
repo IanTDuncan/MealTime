@@ -5,7 +5,10 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.icu.math.BigDecimal
+import com.example.mealtime1.IngredientCost
 import com.example.mealtime1.Meal
+
 
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -17,28 +20,10 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val DATABASE_VERSION = 1
     }
 
-    // User Table
-    private val createTableUser = """
-    CREATE TABLE User (
-        userID INTEGER PRIMARY KEY AUTOINCREMENT
-    );
-    """
-
     // Device Table
     private val createTableDevice = """
     CREATE TABLE Device (
         deviceID TEXT PRIMARY KEY
-    );
-    """
-
-    // MealPlan Table
-    private val createTableMealPlan  = """
-    CREATE TABLE MealPlan  (
-        mealPlanID INTEGER PRIMARY KEY AUTOINCREMENT,
-        userID INTEGER,
-        mealID INTEGER, 
-        FOREIGN KEY (userID) REFERENCES User(userID),
-        FOREIGN KEY (mealID) REFERENCES Results(mealID)
     );
     """
 
@@ -53,25 +38,35 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     """
 
     // ShoppingList Table
-    private val createTableShoppingList  = """
-    CREATE TABLE ShoppingList (
-        listID INTEGER PRIMARY KEY AUTOINCREMENT,
-        mealID INTEGER,
-        mealPlanID INTEGER,
+    private val createTableIngredient  = """
+    CREATE TABLE Ingredient (
+        mealID INTEGER PRIMARY KEY,
         IngredientName TEXT,
-        Quantity INTEGER,
-        Unit TEXT,
-        PricePerUnit INTEGER,
-        FOREIGN KEY (mealID) REFERENCES Results (mealID),
-        FOREIGN KEY (mealPlanID) REFERENCES MealPlan(mealPlanID)
+        PricePerUnit REAL,
+        FOREIGN KEY (mealID) REFERENCES Results (mealID)
     );
     """
 
-
-    fun hasResults(deviceId: String?): Boolean {
+    fun getMealIds(): IntArray {
+        val mealIds = mutableListOf<Int>()
         val db = this.readableDatabase
-        val query = "SELECT * FROM Results INNER JOIN MealPlan ON Results.mealID = MealPlan.mealID WHERE MealPlan.userID = (SELECT userID FROM Device WHERE deviceID = ?)"
-        val cursor = db.rawQuery(query, arrayOf(deviceId))
+        val query = "SELECT mealID FROM Results"
+        val cursor: Cursor = db.rawQuery(query, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val mealId = cursor.getInt(cursor.getColumnIndex("mealID"))
+                mealIds.add(mealId)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return mealIds.toIntArray()
+    }
+
+
+    fun hasResults(): Boolean {
+        val db = this.readableDatabase
+        val query = "SELECT * FROM Results LIMIT 1"
+        val cursor = db.rawQuery(query, null)
         val hasResults = cursor.count > 0
         cursor.close()
         return hasResults
@@ -118,13 +113,42 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         )
     }
 
+    fun insertIngredient(mealId: Int, ingredientName: String, pricePerUnit: android.icu.math.BigDecimal) {
+        val db = this.writableDatabase
+        val values = ContentValues().apply {
+            put("mealID", mealId)
+            put("IngredientName", ingredientName)
+            put("PricePerUnit", pricePerUnit.toDouble())
+        }
+        db.insert("Ingredient", null, values)
+    }
+
+    fun getIngredientsForMeals(mealIds: IntArray): List<IngredientCost> {
+        val ingredients = mutableListOf<IngredientCost>()
+        val db = this.readableDatabase
+        mealIds.forEach { mealId ->
+            val query = "SELECT * FROM Ingredient WHERE mealID = ?"
+            val cursor: Cursor = db.rawQuery(query, arrayOf(mealId.toString()))
+            if (cursor.moveToFirst()) {
+                do {
+                    val ingredientName = cursor.getString(cursor.getColumnIndex("IngredientName"))
+                    val pricePerUnit = cursor.getDouble(cursor.getColumnIndex("PricePerUnit"))
+                    ingredients.add(IngredientCost(ingredientName, BigDecimal(pricePerUnit)))
+                } while (cursor.moveToNext())
+            }
+            cursor.close()
+        }
+        return ingredients
+    }
+
+
+
+
 
     override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL(createTableUser)
         db.execSQL(createTableDevice)
-        db.execSQL(createTableMealPlan)
         db.execSQL(createTableResults)
-        db.execSQL(createTableShoppingList)
+        db.execSQL(createTableIngredient)
 
         // Store the device ID when the database is first created
         val deviceId = DeviceIdManager.getDeviceId(context)
