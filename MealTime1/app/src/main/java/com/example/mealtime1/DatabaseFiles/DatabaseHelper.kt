@@ -40,7 +40,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     // ShoppingList Table
     private val createTableIngredient  = """
     CREATE TABLE Ingredient (
-        mealID INTEGER PRIMARY KEY,
+        mealID INTEGER,
         IngredientName TEXT,
         PricePerUnit REAL,
         FOREIGN KEY (mealID) REFERENCES Results (mealID)

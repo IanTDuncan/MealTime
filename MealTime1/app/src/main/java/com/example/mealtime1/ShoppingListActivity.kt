@@ -47,9 +47,23 @@ class ShoppingListActivity : AppCompatActivity() {
         // Set up RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+
         // Get mealIds from result table
         val dbHelper = DatabaseHelper(this)
         mealIds = dbHelper.getMealIds()
+
+        val ingredientCostList = mutableListOf<IngredientCost>() // Create a list to store IngredientCost objects
+
+        adapter = RecipeAdapter(ingredientCostList)
+        recyclerView.adapter = adapter // Set adapter to RecyclerView
+
+        // Check if there are already ingredients in the database for the meals
+        val existingIngredients = dbHelper.getIngredientsForMeals(mealIds)
+
+        if (existingIngredients.isNotEmpty()) {
+            mealIds.forEach { ingredientCostList.addAll(existingIngredients) }
+            adapter.notifyDataSetChanged()
+        }
 
         // Set up buttons
         addButton.setOnClickListener {
