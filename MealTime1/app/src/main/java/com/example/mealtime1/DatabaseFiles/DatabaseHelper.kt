@@ -142,9 +142,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
 
-
-
-
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(createTableDevice)
         db.execSQL(createTableResults)
@@ -164,6 +161,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL("DROP TABLE IF EXISTS MealPlan;")
         db.execSQL("DROP TABLE IF EXISTS Results;")
         db.execSQL("DROP TABLE IF EXISTS ShoppingList;")
+        db.execSQL("DROP TABLE IF EXISTS Ingredient;")
         onCreate(db)
     }
 }
