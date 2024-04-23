@@ -4,12 +4,48 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"> <!-- Set background color to white -->
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:elevation="0dp"
+        android:id="@+id/appbar"
+        android:background="@color/lettuce_green"
+        />
+
+
+
+    <!-- Title: Grocery List -->
+    <TextView
+        android:id="@+id/textViewGroceryListTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/white"
+        android:text="Grocery List"
+        android:textSize="40sp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="8dp"
+        android:paddingTop="80dp"
         android:paddingBottom="8dp"/>
+
+    <Button
+        android:id="@+id/buttonBackToMainMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/ic_arrow_back"
+        />
 
     <LinearLayout
         android:id="@+id/footer_layout"
@@ -27,6 +63,7 @@
             android:text="Add"
             android:layout_weight="1"
             android:gravity="center"
+            android:background="@drawable/button_border"
             />
 
         <View
@@ -40,20 +77,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Remove"
+            android:background="@drawable/button_border"
             android:layout_weight="1"
             android:gravity="center"
             />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/generate_list_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Generate New Shopping List"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
-        style="@style/TextButton" /> <!-- Apply style for text button -->
 
 </RelativeLayout>

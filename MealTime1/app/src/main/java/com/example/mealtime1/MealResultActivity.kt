@@ -1,5 +1,7 @@
 package com.example.mealtime1
 
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -36,6 +38,13 @@ class MealResultActivity : ComponentActivity() {
         mealRecyclerView = findViewById(R.id.mealRecyclerView)
         mealRecyclerView.layoutManager = LinearLayoutManager(this)
 
+        val reminderbuilder = AlertDialog.Builder(this)
+        reminderbuilder.setTitle("Reminder")
+        reminderbuilder.setMessage("If you like this meal plan, don't forget to save it!")
+        reminderbuilder.setPositiveButton("OK", null)
+        val dialog: AlertDialog = reminderbuilder.create()
+        dialog.show()
+
         val dbHelper = DatabaseHelper(this)
 
         // Query the database for saved meals
@@ -49,10 +58,25 @@ class MealResultActivity : ComponentActivity() {
         }
 
         saveMealButton.setOnClickListener {
-            for (meal in meals) {
-                dbHelper.insertMeal(meal)
-                println("Meals Saved!")
+            val context: Context = saveMealButton.context
+
+            val builder = android.app.AlertDialog.Builder(context)
+            builder.setTitle("Warning!")
+            builder.setMessage("This action will override any previously saved meals for this current plan. Would you like to continue?")
+            builder.setPositiveButton("OK"){ dialog, _ ->
+                for (meal in meals) {
+                    val dialog = (saveMealButton.context as? AlertDialog)
+                    dialog?.dismiss()
+                    dbHelper.insertMeal(meal)
+                    println("Meals Saved!")
+                }
+                dialog.dismiss()
             }
+            builder.setNegativeButton("Cancel"){ dialog, _ ->
+                dialog.dismiss()
+            }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
         }
 
         backButton.setOnClickListener {

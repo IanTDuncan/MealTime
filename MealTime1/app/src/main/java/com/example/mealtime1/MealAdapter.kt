@@ -119,9 +119,11 @@ class MealAdapter(private val meals: List<Meal>, private val context: Context) :
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
             val byteArray = stream.toByteArray()
 
-            // Insert into the database
-            val dbHelper = DatabaseHelper(context)
-            dbHelper.insertNutritionLabel(mealId, byteArray)
+            if(stream == null && mealId == null) {
+                // Insert into the database
+                val dbHelper = DatabaseHelper(context)
+                dbHelper.insertNutritionLabel(mealId, byteArray)
+            }
         }
     }
 
