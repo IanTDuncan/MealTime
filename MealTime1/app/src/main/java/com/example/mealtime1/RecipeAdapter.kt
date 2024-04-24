@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mealtime1.IngredientCost
 import com.example.mealtime1.R
@@ -55,8 +56,11 @@ class RecipeAdapter(private val ingredientCostList: List<IngredientCost>, privat
 
         holder.mealViewText.text = currentItem.mealName ?: "Meal Name"
 
+        val lettuceGreenColor = ContextCompat.getColor(holder.itemView.context, R.color.lettuce_green)
+
+
         if (position == selectedPosition) {
-            holder.itemView.setBackgroundColor(R.color.lettuce_green)
+            holder.itemView.setBackgroundColor(lettuceGreenColor)
             holder.textViewText.setTextColor(Color.WHITE)
             holder.textViewCost.setTextColor(Color.WHITE)
             holder.mealViewText.setTextColor(Color.WHITE)
@@ -64,7 +68,7 @@ class RecipeAdapter(private val ingredientCostList: List<IngredientCost>, privat
             holder.itemView.setBackgroundColor(Color.TRANSPARENT)
             holder.textViewText.setTextColor(Color.GRAY)
             holder.textViewCost.setTextColor(Color.GRAY)
-            holder.mealViewText.setTextColor(Color.GREEN)
+            holder.mealViewText.setTextColor(lettuceGreenColor)
         }
     }
 
