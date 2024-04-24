@@ -33,7 +33,7 @@ class MealAdapter(private val meals: List<Meal>, private val context: Context) :
         .build()
 
     val service = retrofit.create(MealPlanningService::class.java)
-    val apiKey = "faadc412663942a8909197924745241d"
+    val apiKey = "2b78d859d01c4e9c84d93a87691bf450"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.meal_item, parent, false)

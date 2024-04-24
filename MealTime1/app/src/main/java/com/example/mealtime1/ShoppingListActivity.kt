@@ -29,7 +29,7 @@ class ShoppingListActivity : AppCompatActivity(), RecipeAdapter.OnItemClickListe
 
     private lateinit var mealIds: IntArray // Global variable
 
-    val apiKey = "faadc412663942a8909197924745241d"
+    val apiKey = "2b78d859d01c4e9c84d93a87691bf450"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
