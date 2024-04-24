@@ -1,5 +1,6 @@
 package com.example.mealtime1
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -19,7 +20,8 @@ class ShoppingListActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RecipeAdapter
 
-    private lateinit var addButton: Button
+    private lateinit var buttonBackToMainMenu: Button
+    //private lateinit var addButton: Button
     private lateinit var removeButton: Button
     private lateinit var generateList: Button
 
@@ -34,6 +36,7 @@ class ShoppingListActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recycler_view)
         removeButton = findViewById(R.id.remove_button)
         generateList = findViewById(R.id.generate_list_button)
+        buttonBackToMainMenu = findViewById(R.id.buttonBackToMainMenu)
 
         // Initialize Retrofit
         val retrofit = Retrofit.Builder()
@@ -66,6 +69,11 @@ class ShoppingListActivity : AppCompatActivity() {
 
         removeButton.setOnClickListener {
             // Handle removing item
+        }
+
+        buttonBackToMainMenu.setOnClickListener {
+            val intent = Intent(this, MainMenuActivity::class.java)
+            startActivity(intent)
         }
 
         generateList.setOnClickListener {
