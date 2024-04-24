@@ -30,10 +30,12 @@
 
     <TextView
         android:id="@+id/meal_view_text"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Meal Name"
         android:textSize="18sp"
+        android:maxLines="3"
+        android:ellipsize="end"
         android:textStyle="bold"
         android:textColor="@color/lettuce_green"
         android:gravity="end" />
