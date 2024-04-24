@@ -38,7 +38,7 @@ class GenerateMealActivity: ComponentActivity() {
     private lateinit var editTextLimitAmount: EditText
     private lateinit var buttonSaveOptions: Button
     private lateinit var buttonGenerateMeal: Button
-    private lateinit var radioTimeFrame: RadioGroup
+   // private lateinit var radioTimeFrame: RadioGroup
     private lateinit var radioDiet: RadioGroup
     private lateinit var mealIds: Set<Int>
     private lateinit var mealTitles: Set<String>
@@ -87,10 +87,10 @@ class GenerateMealActivity: ComponentActivity() {
                val dialog = (buttonGenerateMeal.context as? AlertDialog)
                dialog?.dismiss()
                try {
-                   // Get selected radio button for time frame
-                   val selectedTimeFrameId = radioTimeFrame.checkedRadioButtonId
-                   val radioButtonTimeFrame = findViewById<RadioButton>(selectedTimeFrameId)
-                   val timeFrame = radioButtonTimeFrame?.text?.toString()?.lowercase() ?: "day"
+                   //Get selected radio button for time frame
+                 //  val selectedTimeFrameId = radioTimeFrame.checkedRadioButtonId
+                 //  val radioButtonTimeFrame = findViewById<RadioButton>(selectedTimeFrameId)
+                   val timeFrame = "day"
 
                    // Get selected radio button for diet
                    val selectedDietId = radioDiet.checkedRadioButtonId
