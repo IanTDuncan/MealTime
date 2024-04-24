@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
+import com.example.mealtime1.DatabaseFiles.DatabaseHelper
+import com.example.mealtime1.DatabaseFiles.DeviceIdManager
 import com.google.android.material.appbar.AppBarLayout
 
 class MainMenuActivity: ComponentActivity() {
@@ -27,14 +29,36 @@ class MainMenuActivity: ComponentActivity() {
       //  textView = findViewById(R.id.textView) //terms and conditions
        // textView2 = findViewById(R.id.textView2) //privacy policy
 
+        val dbHelper = DatabaseHelper(this)
+        // Check if the device has an associated ID in the database
+        val deviceId = DeviceIdManager.getDeviceId(this)
+        if (deviceId == null) {
+            // If not, generate a new ID and store it in SharedPreferences
+            val newDeviceId = DeviceIdManager.generateDeviceId()
+            DeviceIdManager.saveDeviceId(this, newDeviceId)
+        }
+        else {
+            println("Meal ID Retrieved")
+        }
 
-        buttonGenerateMeal.setOnClickListener {
-            val intent = Intent(this,GenerateMealActivity::class.java)
-            startActivity(intent)
+
+        val hasResults = dbHelper.hasResults()
+        if (hasResults) {
+            // If results exist, navigate to a different activity
+            buttonGenerateMeal.setOnClickListener {
+                val intent = Intent(this, MealResultActivity::class.java)
+                startActivity(intent)
+            }
+        } else {
+            // If no results, navigate to GenerateMealActivity
+            buttonGenerateMeal.setOnClickListener {
+                val intent = Intent(this, GenerateMealActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         buttonGroceryList.setOnClickListener {
-            val intent= Intent(this, GroceryListActivity::class.java)
+            val intent= Intent(this, ShoppingListActivity::class.java)
             startActivity(intent)
         }
 

@@ -1,0 +1,43 @@
+<!-- recipe_cost.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_view_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recipe Name"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/text_view_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cost: $0.00"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/meal_view_text"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Meal Name"
+        android:textSize="18sp"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:textStyle="bold"
+        android:textColor="@color/lettuce_green"
+        android:gravity="end" />
+
+</LinearLayout>

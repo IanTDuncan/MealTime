@@ -25,7 +25,7 @@ class GenerateMealActivity: ComponentActivity() {
     private lateinit var editTextLimitAmount: EditText
     private lateinit var buttonSaveOptions: Button
     private lateinit var buttonGenerateMeal: Button
-    private lateinit var radioTimeFrame: RadioGroup
+   // private lateinit var radioTimeFrame: RadioGroup
     private lateinit var radioDiet: RadioGroup
     private lateinit var mealIds: Set<Int>
     private lateinit var mealTitles: Set<String>
@@ -38,7 +38,7 @@ class GenerateMealActivity: ComponentActivity() {
         buttonBackToMainMenu = findViewById(R.id.backButton)
         buttonGenerateMeal = findViewById(R.id.generateMealButton)
         editTextCalorieLimit = findViewById(R.id.lowRange)
-        radioTimeFrame = findViewById(R.id.weekOptions)
+      //  radioTimeFrame = findViewById(R.id.weekOptions)
         radioDiet = findViewById(R.id.dietRadioGroup)
 
 
@@ -70,30 +70,14 @@ class GenerateMealActivity: ComponentActivity() {
                val dialog: AlertDialog = builder.create()
                dialog.show()
            }
-            else if(radioTimeFrame.checkedRadioButtonId == -1){
-               val builder = android.app.AlertDialog.Builder(context)
-               builder.setTitle("Not all requirements are filled.")
-               builder.setMessage("Please check whether you're planning for the day or week.")
-               builder.setPositiveButton("OK",null)
-               val dialog: AlertDialog = builder.create()
-               dialog.show()
-            }
-            else if(calText.isEmpty() && radioTimeFrame.checkedRadioButtonId == -1){
-               val builder = android.app.AlertDialog.Builder(context)
-               builder.setTitle("Not all requirements are filled.")
-               builder.setMessage("Please pick your time frame and fill out your calorie limit.")
-               builder.setPositiveButton("OK",null)
-               val dialog: AlertDialog = builder.create()
-               dialog.show()
-            }
             else {
                val dialog = (buttonGenerateMeal.context as? AlertDialog)
                dialog?.dismiss()
                try {
-                   // Get selected radio button for time frame
-                   val selectedTimeFrameId = radioTimeFrame.checkedRadioButtonId
-                   val radioButtonTimeFrame = findViewById<RadioButton>(selectedTimeFrameId)
-                   val timeFrame = radioButtonTimeFrame?.text?.toString()?.lowercase() ?: "day"
+                   //Get selected radio button for time frame
+                 //  val selectedTimeFrameId = radioTimeFrame.checkedRadioButtonId
+                 //  val radioButtonTimeFrame = findViewById<RadioButton>(selectedTimeFrameId)
+                   val timeFrame = "day"
 
                    // Get selected radio button for diet
                    val selectedDietId = radioDiet.checkedRadioButtonId

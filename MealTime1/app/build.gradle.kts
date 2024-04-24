@@ -60,6 +60,15 @@ val sourcesJar by tasks.registering(Jar::class) {
 
 dependencies {
 
+    implementation ("androidx.sqlite:sqlite:2.2.0")
+    implementation ("androidx.sqlite:sqlite-ktx:2.2.0")
+
+
+    implementation ("com.google.android.material:material:1.5.0-alpha01")
+    implementation ("androidx.viewpager2:viewpager2:1.1.0-alpha01")
+    implementation ("androidx.appcompat:appcompat:1.4.0")
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("com.squareup.okhttp3:logging-interceptor:3.12.1")
     implementation (platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation ("com.google.firebase:firebase-analytics")
     //implementation ("com.google.firebase:firebase-analytics-ktx")
