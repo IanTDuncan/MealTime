@@ -1,8 +1,10 @@
 package com.example.mealtime1
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,14 +16,14 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.math.BigDecimal
 
-class ShoppingListActivity : AppCompatActivity() {
+class ShoppingListActivity : AppCompatActivity(), RecipeAdapter.OnItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RecipeAdapter
 
     private lateinit var buttonBackToMainMenu: Button
-    //private lateinit var addButton: Button
     private lateinit var removeButton: Button
     private lateinit var generateList: Button
 
@@ -33,10 +35,10 @@ class ShoppingListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.shopping_list_activity)
 
+        buttonBackToMainMenu = findViewById(R.id.buttonBackToMainMenu)
         recyclerView = findViewById(R.id.recycler_view)
         removeButton = findViewById(R.id.remove_button)
         generateList = findViewById(R.id.generate_list_button)
-        buttonBackToMainMenu = findViewById(R.id.buttonBackToMainMenu)
 
         // Initialize Retrofit
         val retrofit = Retrofit.Builder()
@@ -55,26 +57,15 @@ class ShoppingListActivity : AppCompatActivity() {
 
         val ingredientCostList = mutableListOf<IngredientCost>() // Create a list to store IngredientCost objects
 
-        adapter = RecipeAdapter(ingredientCostList)
+        adapter = RecipeAdapter(ingredientCostList, this)
         recyclerView.adapter = adapter // Set adapter to RecyclerView
 
         // Check if there are already ingredients in the database for the meals
         val existingIngredients = dbHelper.getIngredientsForMeals(mealIds)
 
         if (existingIngredients.isNotEmpty()) {
-            mealIds.forEach { mealId ->
-                // Get meal name for each ingredient and replace the text in the view
-                val mealName = dbHelper.getSavedMealName(mealId)
-                existingIngredients.filter { it.mealId == mealId }.forEach {
-                    it.mealName = mealName
-                }
-                ingredientCostList.addAll(existingIngredients.filter { it.mealId == mealId })
-            }
+            ingredientCostList.addAll(existingIngredients)
             adapter.notifyDataSetChanged()
-        }
-
-        removeButton.setOnClickListener {
-            // Handle removing item
         }
 
         buttonBackToMainMenu.setOnClickListener {
@@ -82,67 +73,57 @@ class ShoppingListActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        generateList.setOnClickListener {
-            val ingredientCostList = mutableListOf<IngredientCost>() // Create a list to store IngredientCost objects
-
-            val dbHelper = DatabaseHelper(this)
-
-            // Check if there are already ingredients in the database for the meals
-            val existingIngredients = dbHelper.getIngredientsForMeals(mealIds)
-
-            if (existingIngredients.isNotEmpty()) {
-                mealIds.forEach { mealId ->
-                    // Get meal name for each ingredient and replace the text in the view
-                    val mealName = dbHelper.getSavedMealName(mealId)
-                    existingIngredients.filter { it.mealId == mealId }.forEach {
-                        it.mealName = mealName
-                    }
-                    ingredientCostList.addAll(existingIngredients.filter { it.mealId == mealId })
-                }
-                adapter.notifyDataSetChanged()
-            } else {
-                mealIds.forEach { mealId ->
-                    val call = service.getRecipeCost(mealId, apiKey)
-                    call.enqueue(object : Callback<GetRecipePriceBreakdownByID200Response> {
-                        override fun onResponse(
-                            call: Call<GetRecipePriceBreakdownByID200Response>,
-                            response: Response<GetRecipePriceBreakdownByID200Response>
-                        ) {
-                            if (response.isSuccessful) {
-                                val recipe = response.body()
-                                recipe?.ingredients?.forEach { ingredient ->
-                                    val ingredientCost =
-                                        IngredientCost(ingredient.name,
-                                            android.icu.math.BigDecimal(ingredient.price), mealId)
-                                    ingredientCostList.add(ingredientCost) // Add IngredientCost to the list
-
-                                    // Insert ingredient into database
-                                    dbHelper.insertIngredient(mealId, ingredient.name,
-                                        android.icu.math.BigDecimal(ingredient.price)
-                                    )
-
-                                    // Get meal name for the current mealId
-                                    val mealName = dbHelper.getSavedMealName(mealId)
-                                    ingredientCost.mealName = mealName // Set meal name to the ingredient
-                                }
-                                adapter.notifyDataSetChanged()
-                            } else {
-                                Log.e("Shopping List", "Failed to get cost for ID: $mealId")
-                            }
-                        }
-
-                        override fun onFailure(
-                            call: Call<GetRecipePriceBreakdownByID200Response>,
-                            t: Throwable
-                        ) {
-                            Log.e("Shopping List", "Failed to send call: $mealId")
-                        }
-                    })
-                }
+        removeButton.setOnClickListener {
+            // Handle removing selected items
+            val selectedItems = adapter.getSelectedItems()
+            selectedItems.forEach { ingredient ->
+                dbHelper.deleteIngredient(ingredient.mealId, ingredient.name)
+                ingredientCostList.remove(ingredient)
             }
-
-            adapter = RecipeAdapter(ingredientCostList)
-            recyclerView.adapter = adapter // Set adapter to RecyclerView
+            adapter.clearSelection()
+            adapter.notifyDataSetChanged()
         }
+
+        generateList.setOnClickListener {
+            // Fetch new items from API and update the RecyclerView
+            mealIds.forEach { mealId ->
+                val call = service.getRecipeCost(mealId, apiKey)
+                call.enqueue(object : Callback<GetRecipePriceBreakdownByID200Response> {
+                    override fun onResponse(
+                        call: Call<GetRecipePriceBreakdownByID200Response>,
+                        response: Response<GetRecipePriceBreakdownByID200Response>
+                    ) {
+                        if (response.isSuccessful) {
+                            val recipe = response.body()
+                            recipe?.ingredients?.forEach { ingredient ->
+                                val ingredientCost =
+                                    IngredientCost(ingredient.name,
+                                        android.icu.math.BigDecimal(ingredient.price), mealId)
+                                ingredientCostList.add(ingredientCost) // Add IngredientCost to the list
+
+                                // Insert ingredient into database
+                                dbHelper.insertIngredient(mealId, ingredient.name,
+                                    android.icu.math.BigDecimal(ingredient.price)
+                                )
+                            }
+                            adapter.notifyDataSetChanged()
+                        } else {
+                            Log.e("Shopping List", "Failed to get cost for ID: $mealId")
+                        }
+                    }
+
+                    override fun onFailure(
+                        call: Call<GetRecipePriceBreakdownByID200Response>,
+                        t: Throwable
+                    ) {
+                        Log.e("Shopping List", "Failed to send call: $mealId")
+                    }
+                })
+            }
+        }
+    }
+
+    override fun onItemClick(position: Int) {
+        adapter.setSelectedPosition(position)
     }
 }

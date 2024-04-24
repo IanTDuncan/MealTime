@@ -166,8 +166,10 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.delete("Results", null, null)
     }
 
-
-
+    fun deleteIngredient(mealId: Int, ingredientName: String) {
+        val db = this.writableDatabase
+        db.delete("Ingredient", "mealID=? AND IngredientName=?", arrayOf(mealId.toString(), ingredientName))
+    }
 
 
     override fun onCreate(db: SQLiteDatabase) {
