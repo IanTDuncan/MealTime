@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mealtime1.R
 import com.spoonacular.client.model.GetRecipePriceBreakdownByID200Response
+import java.text.DecimalFormat
 
 class RecipeAdapter(private val ingredientCostList: List<IngredientCost>) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
@@ -24,7 +25,12 @@ class RecipeAdapter(private val ingredientCostList: List<IngredientCost>) : Recy
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         val currentItem = ingredientCostList[position]
         holder.textViewText.text = currentItem.name
-        holder.textViewCost.text = "Cost: $${currentItem.price}"
+
+        // Format the price
+        val df = DecimalFormat("#0.00")
+        val formattedPrice = df.format(currentItem.price.toDouble())
+
+        holder.textViewCost.text = "Cost: $$formattedPrice"
 
         // Set meal name to the meal_view_text TextView
         holder.mealViewText.text = currentItem.mealName ?: "Meal Name"
