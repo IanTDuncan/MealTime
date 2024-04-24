@@ -141,6 +141,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return ingredients
     }
 
+    fun deleteAllMeals() {
+        val db = this.writableDatabase
+        db.delete("Results", null, null)
+    }
+
+
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(createTableDevice)

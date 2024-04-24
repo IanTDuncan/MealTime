@@ -64,11 +64,6 @@ class ShoppingListActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
 
-        // Set up buttons
-        addButton.setOnClickListener {
-            // Handle adding item
-        }
-
         removeButton.setOnClickListener {
             // Handle removing item
         }

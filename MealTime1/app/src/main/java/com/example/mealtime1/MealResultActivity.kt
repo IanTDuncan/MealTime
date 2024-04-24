@@ -6,13 +6,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.ImageView
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mealtime1.DatabaseFiles.DatabaseHelper
 import com.spoonacular.client.model.GetRecipeInformation200Response
-import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -54,30 +52,21 @@ class MealResultActivity : ComponentActivity() {
             sharedPreferences.edit().putBoolean("isFirstRun", false).apply()
         }
 
-        val dbHelper = DatabaseHelper(this)
-
-        // Query the database for saved meals
-        val savedMeals = dbHelper.getSavedMeals()
-
-        // If there are no saved meals, fetch from API
-        if (savedMeals.isEmpty()) {
-            fetchMealsFromAPI()
-        } else {
-            displaySavedMeals(savedMeals)
-        }
+        // Fetch meals from API or saved meals from database
+        fetchMealsFromAPI()
 
         saveMealButton.setOnClickListener {
             val context: Context = saveMealButton.context
 
-            val builder = android.app.AlertDialog.Builder(context)
+            val builder = AlertDialog.Builder(context)
             builder.setTitle("Warning!")
             builder.setMessage("This action will override any previously saved meals for this current plan. Would you like to continue?")
             builder.setPositiveButton("OK"){ dialog, _ ->
+                val dbHelper = DatabaseHelper(this)
+                dbHelper.deleteAllMeals()
                 for (meal in meals) {
-                    val dialog = (saveMealButton.context as? AlertDialog)
-                    dialog?.dismiss()
                     dbHelper.insertMeal(meal)
-                    println("Meals Saved!")
+                    Log.d("MealResults", "Meal Saved!")
                 }
                 dialog.dismiss()
             }
@@ -100,31 +89,49 @@ class MealResultActivity : ComponentActivity() {
     }
 
     private fun fetchMealsFromAPI() {
+        // Check if intent contains meal IDs
+        val mealIdsFromIntent = intent.getIntArrayExtra("mealIds")
+        if (mealIdsFromIntent != null && mealIdsFromIntent.isNotEmpty()) {
+            // If intent contains meal IDs, fetch meals from API using those IDs
+            fetchMealsFromAPI(mealIdsFromIntent)
+        } else {
+            // If intent doesn't contain meal IDs, fetch saved meals from database
+            fetchSavedMealsFromDatabase()
+        }
+    }
+
+    private fun fetchMealsFromAPI(mealIds: IntArray) {
+        // Create a Retrofit instance
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.spoonacular.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+        // Create a service for making API calls
         val service = retrofit.create(MealPlanningService::class.java)
+
+        // Get API key
         val apiKey = "2b78d859d01c4e9c84d93a87691bf450"
 
-        val mealIds = intent.getIntArrayExtra("mealIds") ?: intArrayOf()
-
-        //val meals = mutableListOf<Meal>()
+        // Initialize an adapter for the RecyclerView
         val adapter = MealAdapter(meals, this)
         mealRecyclerView.adapter = adapter
 
+        // Iterate over each meal ID and make API call to fetch meal details
         mealIds.forEachIndexed { index, id ->
             val call = service.getRecipes(id, true, apiKey)
             call.enqueue(object : Callback<GetRecipeInformation200Response> {
                 override fun onResponse(call: Call<GetRecipeInformation200Response>, response: Response<GetRecipeInformation200Response>) {
                     if (response.isSuccessful) {
+                        // Parse response and extract meal information
                         val result = response.body()
                         result?.let {
                             val image = it.image
                             image?.let { img ->
+                                // Create a Meal object and add it to the meals list
                                 val meal = Meal(it.title ?: "Meal $id", img, id)
                                 meals.add(meal)
+                                // Notify the adapter that data set has changed
                                 adapter.notifyItemInserted(meals.size - 1)
                             }
                         }
@@ -134,17 +141,24 @@ class MealResultActivity : ComponentActivity() {
                 }
 
                 override fun onFailure(call: Call<GetRecipeInformation200Response>, t: Throwable) {
+                    // Handle failure to fetch meal information
                     Log.e("MealResults", "Error fetching recipe information for ID: $id", t)
                 }
             })
         }
-
-
     }
 
+    private fun fetchSavedMealsFromDatabase() {
+        // Fetch saved meals from database
+        val dbHelper = DatabaseHelper(this)
+        val savedMeals = dbHelper.getSavedMeals()
+
+        // Display saved meals
+        displaySavedMeals(savedMeals)
+    }
 
     private fun displaySavedMeals(savedMeals: List<Meal>) {
-        val adapter = MealAdapter(savedMeals.toMutableList(),this)
+        val adapter = MealAdapter(savedMeals.toMutableList(), this)
         mealRecyclerView.adapter = adapter
     }
 }
