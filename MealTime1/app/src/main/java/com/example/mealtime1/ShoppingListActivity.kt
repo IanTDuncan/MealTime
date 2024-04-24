@@ -32,8 +32,8 @@ class ShoppingListActivity : AppCompatActivity() {
         setContentView(R.layout.shopping_list_activity)
 
         recyclerView = findViewById(R.id.recycler_view)
-        addButton = findViewById(R.id.add_button)
         removeButton = findViewById(R.id.remove_button)
+        generateList = findViewById(R.id.generate_list_button)
 
         // Initialize Retrofit
         val retrofit = Retrofit.Builder()
@@ -63,8 +63,6 @@ class ShoppingListActivity : AppCompatActivity() {
             mealIds.forEach { ingredientCostList.addAll(existingIngredients) }
             adapter.notifyDataSetChanged()
         }
-
-
 
         // Set up buttons
         addButton.setOnClickListener {
