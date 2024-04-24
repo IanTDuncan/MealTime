@@ -8,7 +8,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:gravity="center"
         android:elevation="0dp"
         android:id="@+id/appbar"
@@ -27,32 +27,7 @@
 
     <!-- Radio group for time frame selection -->
 
-    <RadioGroup
-        android:id="@+id/weekOptions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/appbar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp">
 
-
-        <!-- Toggles for breakfast meals -->
-        <RadioButton
-            android:id="@+id/weekdaySwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:textColor="@color/black"
-            android:text="day" />
-
-        <!-- Toggles for full week meals -->
-        <RadioButton
-            android:id="@+id/fullWeekSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:textColor="@color/black"
-            android:text="week" />
-    </RadioGroup>
 
     <!-- Generate meal button -->
     <Button
@@ -74,7 +49,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/weekOptions"
+        android:layout_below="@id/appbar"
         android:layout_above="@+id/generateMealButton"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
