@@ -46,7 +46,6 @@ class ShoppingListActivity : AppCompatActivity() {
         // Set up RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-
         // Get mealIds from result table
         val dbHelper = DatabaseHelper(this)
         mealIds = dbHelper.getMealIds()
@@ -60,7 +59,14 @@ class ShoppingListActivity : AppCompatActivity() {
         val existingIngredients = dbHelper.getIngredientsForMeals(mealIds)
 
         if (existingIngredients.isNotEmpty()) {
-            mealIds.forEach { ingredientCostList.addAll(existingIngredients) }
+            mealIds.forEach { mealId ->
+                // Get meal name for each ingredient and replace the text in the view
+                val mealName = dbHelper.getSavedMealName(mealId)
+                existingIngredients.filter { it.mealId == mealId }.forEach {
+                    it.mealName = mealName
+                }
+                ingredientCostList.addAll(existingIngredients.filter { it.mealId == mealId })
+            }
             adapter.notifyDataSetChanged()
         }
 
@@ -77,7 +83,14 @@ class ShoppingListActivity : AppCompatActivity() {
             val existingIngredients = dbHelper.getIngredientsForMeals(mealIds)
 
             if (existingIngredients.isNotEmpty()) {
-                ingredientCostList.addAll(existingIngredients)
+                mealIds.forEach { mealId ->
+                    // Get meal name for each ingredient and replace the text in the view
+                    val mealName = dbHelper.getSavedMealName(mealId)
+                    existingIngredients.filter { it.mealId == mealId }.forEach {
+                        it.mealName = mealName
+                    }
+                    ingredientCostList.addAll(existingIngredients.filter { it.mealId == mealId })
+                }
                 adapter.notifyDataSetChanged()
             } else {
                 mealIds.forEach { mealId ->
@@ -92,14 +105,17 @@ class ShoppingListActivity : AppCompatActivity() {
                                 recipe?.ingredients?.forEach { ingredient ->
                                     val ingredientCost =
                                         IngredientCost(ingredient.name,
-                                            android.icu.math.BigDecimal(ingredient.price)
-                                        )
+                                            android.icu.math.BigDecimal(ingredient.price), mealId)
                                     ingredientCostList.add(ingredientCost) // Add IngredientCost to the list
 
                                     // Insert ingredient into database
                                     dbHelper.insertIngredient(mealId, ingredient.name,
                                         android.icu.math.BigDecimal(ingredient.price)
                                     )
+
+                                    // Get meal name for the current mealId
+                                    val mealName = dbHelper.getSavedMealName(mealId)
+                                    ingredientCost.mealName = mealName // Set meal name to the ingredient
                                 }
                                 adapter.notifyDataSetChanged()
                             } else {

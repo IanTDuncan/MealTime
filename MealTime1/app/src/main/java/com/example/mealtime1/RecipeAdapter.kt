@@ -13,6 +13,7 @@ class RecipeAdapter(private val ingredientCostList: List<IngredientCost>) : Recy
     inner class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewText: TextView = itemView.findViewById(R.id.text_view_text)
         val textViewCost: TextView = itemView.findViewById(R.id.text_view_cost)
+        val mealViewText: TextView = itemView.findViewById(R.id.meal_view_text)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
@@ -24,6 +25,9 @@ class RecipeAdapter(private val ingredientCostList: List<IngredientCost>) : Recy
         val currentItem = ingredientCostList[position]
         holder.textViewText.text = currentItem.name
         holder.textViewCost.text = "Cost: $${currentItem.price}"
+
+        // Set meal name to the meal_view_text TextView
+        holder.mealViewText.text = currentItem.mealName ?: "Meal Name"
     }
 
 

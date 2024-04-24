@@ -133,7 +133,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 do {
                     val ingredientName = cursor.getString(cursor.getColumnIndex("IngredientName"))
                     val pricePerUnit = cursor.getDouble(cursor.getColumnIndex("PricePerUnit"))
-                    ingredients.add(IngredientCost(ingredientName, BigDecimal(pricePerUnit)))
+                    val ingredientCost = IngredientCost(ingredientName, BigDecimal(pricePerUnit), mealId)
+
+                    // Retrieve meal name associated with the meal ID
+                    val mealName = getSavedMealName(mealId)
+                    ingredientCost.mealName = mealName
+
+                    ingredients.add(ingredientCost)
                 } while (cursor.moveToNext())
             }
             cursor.close()
@@ -141,10 +147,26 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return ingredients
     }
 
+
+    fun getSavedMealName(mealId: Int): String? {
+        val db = this.readableDatabase
+        val query = "SELECT mealName FROM Results WHERE mealID = ?"
+        val cursor: Cursor = db.rawQuery(query, arrayOf(mealId.toString()))
+        var mealName: String? = null
+        if (cursor.moveToFirst()) {
+            mealName = cursor.getString(cursor.getColumnIndex("mealName"))
+        }
+        cursor.close()
+        return mealName
+    }
+
+
     fun deleteAllMeals() {
         val db = this.writableDatabase
         db.delete("Results", null, null)
     }
+
+
 
 
 
