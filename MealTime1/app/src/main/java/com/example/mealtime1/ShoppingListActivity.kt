@@ -85,9 +85,6 @@ class ShoppingListActivity : AppCompatActivity(), RecipeAdapter.OnItemClickListe
         }
 
         generateList.setOnClickListener {
-            // Deletes Previous Shopping List Data
-            dbHelper.deleteAllIngredients()
-
             // Fetch new items from API and update the RecyclerView
             mealIds.forEach { mealId ->
                 val call = service.getRecipeCost(mealId, apiKey)
@@ -109,7 +106,6 @@ class ShoppingListActivity : AppCompatActivity(), RecipeAdapter.OnItemClickListe
                                     android.icu.math.BigDecimal(ingredient.price)
                                 )
                             }
-                            recyclerView.adapter = adapter
                             adapter.notifyDataSetChanged()
                         } else {
                             Log.e("Shopping List", "Failed to get cost for ID: $mealId")
