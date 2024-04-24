@@ -38,12 +38,21 @@ class MealResultActivity : ComponentActivity() {
         mealRecyclerView = findViewById(R.id.mealRecyclerView)
         mealRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        val reminderbuilder = AlertDialog.Builder(this)
-        reminderbuilder.setTitle("Reminder")
-        reminderbuilder.setMessage("If you like this meal plan, don't forget to save it!")
-        reminderbuilder.setPositiveButton("OK", null)
-        val dialog: AlertDialog = reminderbuilder.create()
-        dialog.show()
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val isFirstRun = sharedPreferences.getBoolean("isFirstRun", true)
+
+        if (isFirstRun) {
+            // Show alert dialog reminding the user to save the meal if they like it
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Reminder")
+            builder.setMessage("If you like this meal plan, don't forget to save it!")
+            builder.setPositiveButton("OK", null)
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+
+            // Set isFirstRun to false to indicate that it's no longer the first run
+            sharedPreferences.edit().putBoolean("isFirstRun", false).apply()
+        }
 
         val dbHelper = DatabaseHelper(this)
 
